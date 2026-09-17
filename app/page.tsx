@@ -81,7 +81,7 @@ export default function LandingPage() {
               </div>
               <div className="hero-top-right">
                 <p className="tag">
-                  From script to final 4K render, with consistent characters and cinematic camera work — buy compute time and start today.
+                  From script to final 4K render and direct vertical distribution — direct consistent characters, master cinematic camera motion, reach built-in audiences, and earn revenue as you&rsquo;re watched.
                 </p>
               </div>
             </div>
@@ -146,10 +146,10 @@ export default function LandingPage() {
             <div className="kicker">Pipeline</div>
             <h2>How production works in Osmosis</h2>
             <p className="lede">
-              A studio built specifically for directors: turn written narrative into continuous, consistent cinematic footage.
+              A studio built specifically for directors: turn written narrative into continuous cinematic footage and distribute directly to audiences.
             </p>
 
-            <div className="pipeline-grid">
+            <div className="pipeline-grid four-col">
               <div className="pipeline-card">
                 <div className="num">01</div>
                 <h3>Script &amp; Scene Direction</h3>
@@ -171,6 +171,14 @@ export default function LandingPage() {
                 <h3>Mastering &amp; Soundscapes</h3>
                 <p>
                   Generate at 24fps in crisp 4K with synchronized foley, dialogue stems, and ambient sound design ready for the timeline.
+                </p>
+              </div>
+
+              <div className="pipeline-card">
+                <div className="num">04</div>
+                <h3>Direct Distribution &amp; Monetization</h3>
+                <p>
+                  Publish in one tap to the Osmosis mobile feed, reach phone-first viewers worldwide, and earn a direct revenue share on every view.
                 </p>
               </div>
             </div>

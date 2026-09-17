@@ -355,6 +355,22 @@ section h2 {
   gap: 16px;
 }
 
+.pipeline-grid.four-col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .pipeline-grid.four-col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .pipeline-grid.four-col {
+    grid-template-columns: 1fr;
+  }
+}
+
 .pipeline-card {
   background: var(--ink);
   border: 1px solid var(--line);
