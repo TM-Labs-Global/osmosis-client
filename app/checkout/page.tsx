@@ -149,7 +149,7 @@ function CheckoutContent() {
             </div>
           </div>
           <p className="receipt-closing-message">
-            A confirmation receipt has been sent to your inbox. We are provisioning your generation account manually—your platform credentials will land shortly.
+            A confirmation receipt has been sent to your inbox. Your generation workspace is currently being provisioned—your platform credentials will arrive shortly.
           </p>
           <Link href="/" className="home-return-button">
             Return to Homepage

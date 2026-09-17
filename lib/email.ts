@@ -59,35 +59,40 @@ export async function addCustomerToAudience(email: string) {
 // brand rule, everything else safe, boring, and legible everywhere.
 function paymentConfirmationTemplate(planName: string, points?: number) {
   const pointsLine = points
-    ? `<p style="font-size:15px; line-height:1.6; color:#4b4b4f; margin:0 0 16px;">
-         Your balance: <strong>${points.toLocaleString()} points</strong> (2 points = 1 second of generation).
-       </p>`
+    ? `<div style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; padding:14px 18px; margin:0 0 20px;">
+         <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#6b7280; margin-bottom:4px;">Credit Allocation</div>
+         <div style="font-size:17px; font-weight:700; color:#141416;">
+           ${points.toLocaleString()} generation credits
+         </div>
+         <div style="font-size:13px; color:#6b7280; margin-top:2px;">
+           2 credits = 1 second of AI video generation
+         </div>
+       </div>`
     : "";
   return `
-  <div style="background:#f4f4f5; padding:40px 16px; font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">
-    <table role="presentation" width="100%" style="max-width:480px; margin:0 auto; background:#ffffff; border-radius:12px; overflow:hidden;">
+  <div style="background:#f4f4f5; padding:40px 16px; font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">
+    <table role="presentation" width="100%" style="max-width:500px; margin:0 auto; background:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,0.04);">
       <tr>
         <td style="padding:32px 32px 0;">
-          <div style="font-size:20px; font-weight:700; letter-spacing:-0.01em; color:#141416;">Osmosis</div>
-          <div style="height:3px; width:40px; background:#DCFF50; margin-top:12px; border-radius:2px;"></div>
+          <div style="font-size:22px; font-weight:700; letter-spacing:-0.02em; color:#141416;">Osmosis</div>
+          <div style="height:3px; width:44px; background:#DCFF50; margin-top:10px; border-radius:2px;"></div>
         </td>
       </tr>
       <tr>
         <td style="padding:28px 32px 8px;">
-          <h1 style="font-size:22px; margin:0 0 16px; color:#141416;">Payment received — welcome to Osmosis.</h1>
+          <h1 style="font-size:21px; font-weight:700; margin:0 0 16px; color:#141416; letter-spacing:-0.01em;">Payment confirmed — welcome to Osmosis.</h1>
           <p style="font-size:15px; line-height:1.6; color:#4b4b4f; margin:0 0 16px;">
-            You're signed up for the <strong>${planName}</strong> package. We're setting up your
-            account by hand right now — your login details will land in this inbox shortly.
+            Thank you for your purchase. You are confirmed for the <strong>${planName}</strong> package. Your generation workspace is being provisioned, and your login credentials will arrive in this inbox shortly.
           </p>
           ${pointsLine}
-          <p style="font-size:15px; line-height:1.6; color:#4b4b4f; margin:0 0 16px;">
-            No action needed from you until then. If anything looks off, just reply to this email.
+          <p style="font-size:14px; line-height:1.6; color:#6b7280; margin:0 0 16px;">
+            No action is required from you at this time. If you have any questions or require immediate support, simply reply directly to this email.
           </p>
         </td>
       </tr>
       <tr>
         <td style="padding:8px 32px 32px;">
-          <p style="font-size:13px; color:#9c9ba3; margin:0;">— The Osmosis team</p>
+          <p style="font-size:13px; color:#9c9ba3; margin:0;">— The Osmosis Team</p>
         </td>
       </tr>
     </table>
