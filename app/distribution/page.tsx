@@ -2,32 +2,31 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { plans } from "@/lib/plans";
 
-const pricingFaqs = [
+const distributionFaqs = [
   {
-    q: "How do generation points work?",
-    a: "2 points equals exactly 1 second of AI video generation. For example, the Growth package gives you 1,900 points. Your balance and exact job cost are always displayed in points before you start any generation.",
+    q: "Do I have to publish everything I generate?",
+    a: "No. Publishing to the Osmosis feed is entirely optional and happens per project. Keep drafts, tests, and unfinished cuts private, and publish only the films you're ready to put in front of an audience.",
   },
   {
-    q: "Do my purchased points expire?",
-    a: "No. Points never expire. Once purchased, your balance remains in your account indefinitely until you choose to use it.",
+    q: "How is my revenue share calculated?",
+    a: "You earn a share of the ad and platform revenue driven by verified views on your published series. Views are tallied continuously and your share accrues to your account balance in real time.",
   },
   {
-    q: "Why are retries billed at the standard rate?",
-    a: "Every video generation consumes the same dedicated GPU compute cluster time whether you decide to keep the clip for your final cut or re-roll the prompt. We believe in complete transparency: you are buying generation compute time, not a pre-determined count of finished clips.",
+    q: "Do I keep the rights to what I publish?",
+    a: "Yes. Publishing to Osmosis never transfers ownership — you retain 100% full commercial rights to every clip, storyboard, and frame you generate, whether it's published or not.",
   },
   {
-    q: "Can I upgrade to a bigger package later?",
-    a: "Yes. Every package is a one-time, top-up purchase — buy Starter today and add a Growth or Enterprise package whenever you need more credits. Nothing expires and nothing is lost in between.",
+    q: "Can I also publish my film elsewhere?",
+    a: "Yes. Distribution through Osmosis isn't exclusive. License or publish your films anywhere else you like, in parallel — nothing about using Osmosis's feed restricts what you do with your own work.",
   },
   {
-    q: "Who owns the rights to the generated films?",
-    a: "You retain 100% full commercial ownership of all clips, storyboards, and audio generated through your Osmosis account. You are free to distribute, monetize, and screen your films anywhere without royalty fees.",
+    q: "When do I start earning, and when do I get paid?",
+    a: "Revenue share begins accruing from your very first published view. Payouts are issued monthly to the account you connect at publish time, once your balance crosses the ₦5,000 minimum threshold.",
   },
 ];
 
-export default function PricingPage() {
+export default function DistributionPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   function toggleFaq(index: number) {
@@ -61,7 +60,7 @@ export default function PricingPage() {
             <Link href="/#faq" className="nav-link">FAQ</Link>
           </div>
 
-          <Link href="#packages" className="nav-cta">
+          <Link href="/pricing" className="nav-cta">
             Get Started
           </Link>
         </div>
@@ -72,103 +71,124 @@ export default function PricingPage() {
         <section className="hero section-light">
           <div className="wrap">
             <div className="pricing-page-header">
-              <div className="kicker">Access</div>
-              <h1>Simple pricing.<br />Buy generation time.</h1>
+              <div className="kicker">Distribution</div>
+              <h1>Your film finds<br />its audience.</h1>
               <p className="lede" style={{ marginTop: 20, marginBottom: 0 }}>
-                One-time purchase in Naira via Paystack. No subscriptions, no recurring commitments — buy credits, use them whenever you&rsquo;re ready to direct.
+                Generation is only the first half. Publish straight to the Osmosis feed, reach viewers built for vertical, phone-first stories, and get paid for every view.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Pricing Grid (shared source: lib/plans.ts) */}
-        <section id="packages">
+        {/* How distribution works */}
+        <section id="how-it-works">
           <div className="wrap">
-            <div className="swatch-pricing-grid">
-              {plans.map((plan) => (
-                <div key={plan.id} className={`pricing-box ${plan.recommended ? "popular" : ""}`}>
-                  {plan.recommended && <div className="badge-rec">Recommended</div>}
-                  <h3>{plan.name}</h3>
-                  <div className="pricing-credits">
-                    <span className="amt">{plan.points.toLocaleString()}</span>
-                    <span className="lbl">credits</span>
-                  </div>
-                  <div className="pricing-rate">₦{plan.perSecondNaira} / second · 2 points = 1s</div>
-                  <div className="pricing-row">
-                    <span className="listed">₦{plan.listedNaira.toLocaleString()}</span>
-                    <span className="vat">+ VAT</span>
-                  </div>
-                  <div className="pricing-sub">
-                    ₦{plan.totalNaira.toLocaleString()} total
-                  </div>
+            <div className="kicker">Mechanics</div>
+            <h2>From render to revenue in three steps</h2>
+            <p className="lede">
+              No separate upload, no second platform to manage — distribution is built into the same studio you already direct in.
+            </p>
 
-                  {plan.modelLineup && (
-                    <div className="pricing-models-card">
-                      <div className="models-card-header">
-                        <div className="models-card-title-wrap">
-                          <span className="models-card-title">
-                            ACCESS TO <span className="highlight-cyan">{plan.modelLineup.header}</span>
-                          </span>
-                          <span className="models-card-sub">{plan.modelLineup.subtitle}</span>
-                        </div>
-                        <div className="models-card-icon-badge" aria-hidden="true">
-                          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-                            <rect x="1" y="6" width="2.2" height="8" rx="1.1" />
-                            <rect x="5" y="2" width="2.2" height="12" rx="1.1" />
-                            <rect x="9" y="5" width="2.2" height="9" rx="1.1" />
-                            <rect x="13" y="1" width="2.2" height="13" rx="1.1" />
-                          </svg>
-                        </div>
-                      </div>
+            <div className="pipeline-grid">
+              <div className="pipeline-card">
+                <div className="num">01</div>
+                <h3>Publish in one tap</h3>
+                <p>
+                  Send your finished cut straight from Re-cut Studio to the Osmosis feed — auto-formatted for vertical, phone-first playback, no re-export required.
+                </p>
+              </div>
 
-                      <div className="models-card-rows">
-                        {plan.modelLineup.models.map((model, idx) => (
-                          <div key={idx} className="model-access-row">
-                            <div className="model-name-wrap">
-                              <svg className="model-row-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                                <rect x="1" y="6" width="2.2" height="8" rx="1.1" />
-                                <rect x="5" y="2" width="2.2" height="12" rx="1.1" />
-                                <rect x="9" y="5" width="2.2" height="9" rx="1.1" />
-                                <rect x="13" y="1" width="2.2" height="13" rx="1.1" />
-                              </svg>
-                              <span className="model-name">{model.name}</span>
-                            </div>
-                            <div className="model-badges">
-                              <span className="badge-resolution">{model.resolution}</span>
-                              <span className="badge-access">{model.access}</span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+              <div className="pipeline-card">
+                <div className="num">02</div>
+                <h3>Reach a built-in audience</h3>
+                <p>
+                  Get discovered by viewers already watching short, serialized vertical series across the Osmosis distribution network — no ad spend required to launch.
+                </p>
+              </div>
 
-                  <Link href={`/checkout?plan=${plan.id}`} className="btn">
-                    Choose {plan.name}
-                  </Link>
-                </div>
-              ))}
-            </div>
-
-            <div className="disclosures-wrap">
-              <p>2 points = 1 second of generation. Balance and job cost are always shown in points before you confirm.</p>
-              <p>Every generation is billed at the same rate whether you keep it or discard it — retries aren&apos;t free. This buys generation time, not a promised number of finished videos.</p>
-              <p>Points don&apos;t expire. Purchases are final and non-refundable.</p>
+              <div className="pipeline-card">
+                <div className="num">03</div>
+                <h3>Earn as you&rsquo;re watched</h3>
+                <p>
+                  Collect a revenue share on every verified view, with optional licensing to partner platforms as your series builds an audience.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Pricing FAQ */}
-        <section id="pricing-faq" className="section-light">
+        {/* Revenue share terms */}
+        <section id="terms" className="section-light">
+          <div className="wrap">
+            <div className="kicker">Terms</div>
+            <h2>Simple, creator-first terms</h2>
+            <p className="lede">
+              No exclusivity, no forced publishing, no surprise cuts to what you keep.
+            </p>
+
+            <div className="cap-list">
+              <div className="cap-item">
+                <svg className="cap-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v10M9.5 9.5c0-1.4 1.2-2.2 2.5-2.2s2.5.8 2.5 2c0 1.6-2 2-2.5 2.7v.5M9.5 15.2c0 1.4 1.2 2.3 2.5 2.3s2.5-.9 2.5-2.3" strokeLinecap="round" />
+                </svg>
+                <span className="cap-item-tag">Payouts</span>
+                <h3>70/30 revenue share</h3>
+                <p>
+                  You keep 70% of every view-based payout your published series earns. Balances accrue continuously and pay out monthly to your linked account.
+                </p>
+              </div>
+
+              <div className="cap-item">
+                <svg className="cap-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round">
+                  <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
+                  <path d="M9 12l2 2 4-4.5" strokeLinecap="round" />
+                </svg>
+                <span className="cap-item-tag">Ownership</span>
+                <h3>You keep your rights</h3>
+                <p>
+                  Publishing never transfers ownership. You retain full commercial rights to every clip you generate, whether it&rsquo;s published, private, or licensed elsewhere.
+                </p>
+              </div>
+
+              <div className="cap-item">
+                <svg className="cap-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                  <path d="M9 12a3 3 0 106 0 3 3 0 00-6 0z" />
+                  <path d="M4 12h2M18 12h2M12 4v2M12 18v2" />
+                </svg>
+                <span className="cap-item-tag">Licensing</span>
+                <h3>Optional licensing</h3>
+                <p>
+                  Opt in to license your series to partner platforms across the Osmosis network for additional revenue, on top of your feed earnings.
+                </p>
+              </div>
+
+              <div className="cap-item">
+                <svg className="cap-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                  <rect x="3" y="8" width="18" height="8" rx="4" />
+                  <circle cx="8" cy="12" r="2.4" fill="currentColor" stroke="none" />
+                </svg>
+                <span className="cap-item-tag">Flexible</span>
+                <h3>Never required</h3>
+                <p>
+                  Distribution is entirely optional, per project. Keep every generation private, or publish only the cuts you actually want in front of an audience.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Distribution FAQ */}
+        <section id="distribution-faq">
           <div className="wrap">
             <div className="kicker">Reference</div>
-            <h2>Billing questions</h2>
+            <h2>Distribution questions</h2>
             <p className="lede">
-              Clear rules and compute economics before you buy.
+              How publishing, reach, and payouts actually work.
             </p>
 
             <div className="faq-group">
-              {pricingFaqs.map((faq, index) => {
+              {distributionFaqs.map((faq, index) => {
                 const isOpen = openFaq === index;
                 return (
                   <div key={index} className="faq-row">
@@ -186,6 +206,21 @@ export default function PricingPage() {
                   </div>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* Closing CTA */}
+        <section id="distribution-cta" className="section-light">
+          <div className="wrap distribution-cta-wrap">
+            <h2>Ready to make something worth publishing?</h2>
+            <p className="lede" style={{ marginBottom: 0 }}>
+              Buy generation time, direct your first film, and publish it to the Osmosis feed the moment it&rsquo;s ready.
+            </p>
+            <div className="distribution-teaser-cta">
+              <Link href="/pricing" className="btn">
+                Get generation credits
+              </Link>
             </div>
           </div>
         </section>

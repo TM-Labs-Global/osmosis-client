@@ -11,7 +11,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
-import { sendPaymentConfirmationEmail, sendTeamNotificationEmail } from "@/lib/email";
+import { sendPaymentConfirmationEmail, sendTeamNotificationEmail, addCustomerToAudience } from "@/lib/email";
 import { getPlanById } from "@/lib/plans";
 
 // In-memory duplicate guard used as fallback if Upstash Redis is not configured.
@@ -102,8 +102,8 @@ export async function POST(req: NextRequest) {
         console.error("Failed to send customer confirmation email:", err);
       }
 
-      // Notify internal team if TEAM_NOTIFICATION_EMAIL is configured
-      const teamEmail = process.env.TEAM_NOTIFICATION_EMAIL;
+      // Notify internal operations team (supports TEAM_NOTIFICATION_EMAIL or RESEND_OWNER_EMAIL)
+      const teamEmail = process.env.TEAM_NOTIFICATION_EMAIL || process.env.RESEND_OWNER_EMAIL;
       if (teamEmail) {
         try {
           await sendTeamNotificationEmail(teamEmail, email, plan.name, plan.points, reference, plan.totalNaira);
@@ -111,6 +111,9 @@ export async function POST(req: NextRequest) {
           console.error("Failed to send internal team notification email:", err);
         }
       }
+
+      // Add paying customer to Resend audience if RESEND_GENERAL_AUDIENCE_ID is configured
+      await addCustomerToAudience(email);
     }
   }
 

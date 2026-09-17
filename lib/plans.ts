@@ -5,6 +5,12 @@
 // against what it actually paid). Never trust a plan's identity or price
 // from client-supplied metadata alone; always cross-check against this.
 
+export interface PlanModelAccess {
+  name: string;
+  resolution: string;
+  access: string;
+}
+
 export interface Plan {
   id: string;
   name: string;
@@ -14,6 +20,11 @@ export interface Plan {
   minutes: string;
   perSecondNaira: string;
   recommended?: boolean;
+  modelLineup?: {
+    header: string;
+    subtitle: string;
+    models: PlanModelAccess[];
+  };
 }
 
 // Source: Oraya_Points-Pricing-Model.pdf, Sections 2–4.
@@ -26,6 +37,15 @@ export const plans: Plan[] = [
     totalNaira: 16125,
     minutes: "7.5",
     perSecondNaira: "33.33",
+    modelLineup: {
+      header: "SEEDANCE & SEEDREAM",
+      subtitle: "Full line-up included",
+      models: [
+        { name: "Seedance 2.5", resolution: "1080p", access: "Full access" },
+        { name: "Seedance 2.0", resolution: "4K", access: "Full access" },
+        { name: "SeeDream", resolution: "4K Stills", access: "Full access" },
+      ],
+    },
   },
   {
     id: "growth",
@@ -36,6 +56,15 @@ export const plans: Plan[] = [
     minutes: "15.8",
     perSecondNaira: "31.58",
     recommended: true,
+    modelLineup: {
+      header: "SEEDANCE & SEEDREAM",
+      subtitle: "Full line-up included",
+      models: [
+        { name: "Seedance 2.5", resolution: "1080p", access: "Full access" },
+        { name: "Seedance 2.0", resolution: "4K", access: "Full access" },
+        { name: "SeeDream", resolution: "4K Stills", access: "Full access" },
+      ],
+    },
   },
   {
     id: "enterprise",
@@ -45,6 +74,15 @@ export const plans: Plan[] = [
     totalNaira: 53750,
     minutes: "28.3",
     perSecondNaira: "29.41",
+    modelLineup: {
+      header: "SEEDANCE & SEEDREAM",
+      subtitle: "Full line-up included",
+      models: [
+        { name: "Seedance 2.5", resolution: "1080p", access: "Full access" },
+        { name: "Seedance 2.0", resolution: "4K", access: "Full access" },
+        { name: "SeeDream", resolution: "4K Stills", access: "Full access" },
+      ],
+    },
   },
 ];
 

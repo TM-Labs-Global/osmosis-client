@@ -7,7 +7,7 @@ import { plans } from "@/lib/plans";
 const faqs = [
   {
     q: "How do generation points work?",
-    a: "2 points equals exactly 1 second of AI video generation. For example, the Growth package gives you 1,900 points, which translates to 15.8 minutes of raw generation time. Your balance and exact job cost are always displayed in points before you start any generation.",
+    a: "2 points equals exactly 1 second of AI video generation. For example, the Growth package gives you 1,900 points. Your balance and exact job cost are always displayed in points before you start any generation.",
   },
   {
     q: "Do my purchased points expire?",
@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: "Who owns the rights to the generated films?",
-    a: "You retain 100% full commercial ownership of all clips, storyboards, and audio generated through your Oraya account. You are free to distribute, monetize, and screen your films anywhere without royalty fees.",
+    a: "You retain 100% full commercial ownership of all clips, storyboards, and audio generated through your Osmosis account. You are free to distribute, monetize, and screen your films anywhere without royalty fees.",
   },
   {
     q: "How do I receive my account after completing payment?",
@@ -29,8 +29,6 @@ const faqs = [
 
 export default function LandingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [heroNav, setHeroNav] = useState("script");
-  const [heroMode, setHeroMode] = useState<"director" | "manual">("director");
 
   function toggleFaq(index: number) {
     setOpenFaq(openFaq === index ? null : index);
@@ -42,18 +40,15 @@ export default function LandingPage() {
       <nav className="site-nav section-light">
         <div className="nav-inner">
           <Link href="/" className="nav-brand">
-            <svg className="nav-mark" viewBox="0 0 120 120">
-              <defs>
-                <radialGradient id="g-nav" cx="35%" cy="35%" r="75%">
-                  <stop offset="0%" stopColor="#F2871E" />
-                  <stop offset="45%" stopColor="#E5502E" />
-                  <stop offset="100%" stopColor="#D6407A" />
-                </radialGradient>
-              </defs>
-              <circle cx="52" cy="62" r="36" fill="none" stroke="currentColor" strokeWidth="6" />
-              <circle cx="82" cy="34" r="18" fill="url(#g-nav)" />
+            <svg className="brand-wordmark" viewBox="0 0 999.64 361.72" fill="currentColor" aria-label="Osmosis">
+              <path d="M67.87,0h-26.26C18.67,0,0,18.67,0,41.61v278.17c0,22.94,18.67,41.61,41.61,41.61h26.26c22.94,0,41.61-18.67,41.61-41.61V41.61C109.48,18.67,90.81,0,67.87,0ZM74.98,319.78c0,3.92-3.19,7.11-7.11,7.11h-26.26c-3.92,0-7.11-3.19-7.11-7.11V41.61c0-3.92,3.19-7.11,7.11-7.11h26.26c3.92,0,7.11,3.19,7.11,7.11v278.17Z" />
+              <path d="M622.65,0h-95.7c-22.94,0-41.61,18.67-41.61,41.61v278.17c0,22.94,18.67,41.61,41.61,41.61h95.7c22.94,0,41.61-18.67,41.61-41.61V41.61c0-22.94-18.67-41.61-41.61-41.61ZM629.76,319.78c0,3.92-3.19,7.11-7.11,7.11h-95.7c-3.92,0-7.11-3.19-7.11-7.11V41.61c0-3.92,3.19-7.11,7.11-7.11h95.7c3.92,0,7.11,3.19,7.11,7.11v278.17Z" />
+              <path d="M931.77,118.79l-3.81-3.29c-2.1-1.81-3.3-4.45-3.3-7.22V41.95c0-2,.83-3.98,2.29-5.41,1.34-1.32,3.03-2.04,4.82-2.04h26.38c3.85.06,6.99,3.25,6.99,7.1v57.75h34.5v-57.15C999.64,19.31,981.29.38,958.74,0h-26.97s0,0,0,0c-10.99,0-21.32,4.22-29.17,11.94-8.02,7.89-12.44,18.42-12.44,29.67v80.07c0,4.62,2.01,9.01,5.5,12.03l67.86,56.73c1.02.89,1.61,2.17,1.61,3.52v125.47c0,2.01-.83,3.98-2.29,5.41-1.34,1.32-3.04,2.03-4.82,2.03h-26.26s-.08,0-.12,0c-3.85-.06-6.99-3.25-6.99-7.11v-123.03h-34.5v122.44c0,22.89,18.35,41.82,40.9,42.2h26.97c10.97,0,21.33-4.22,29.17-11.94,8.02-7.89,12.44-18.42,12.44-29.67v-136.97c0-4.62-2.01-9.01-5.5-12.03l-62.37-51.98Z" />
+              <path d="M733.69,118.79l-3.81-3.29c-2.1-1.81-3.3-4.45-3.3-7.22V41.95c0-2,.83-3.98,2.29-5.41,1.34-1.32,3.03-2.04,4.82-2.04h26.38c3.85.06,6.99,3.25,6.99,7.1v57.75h34.5v-57.15C801.56,19.31,783.21.38,760.66,0h-26.97s0,0,0,0c-10.99,0-21.32,4.22-29.17,11.94-8.02,7.89-12.44,18.42-12.44,29.67v80.07c0,4.62,2.01,9.01,5.5,12.03l67.86,56.73c1.02.89,1.61,2.17,1.61,3.52v125.47c0,2.01-.83,3.98-2.29,5.41-1.34,1.32-3.04,2.03-4.82,2.03h-26.26s-.08,0-.12,0c-3.85-.06-6.99-3.25-6.99-7.11v-123.03h-34.5v122.44c0,22.89,18.35,41.82,40.9,42.2h26.97c10.97,0,21.33-4.22,29.17-11.94,8.02-7.89,12.44-18.42,12.44-29.67v-136.97c0-4.62-2.01-9.01-5.5-12.03l-62.37-51.98Z" />
+              <path d="M178.91,118.79l-3.81-3.29c-2.1-1.81-3.3-4.45-3.3-7.22V41.95c0-2,.83-3.98,2.29-5.41,1.34-1.32,3.03-2.04,4.82-2.04h26.38c3.85.06,6.99,3.25,6.99,7.1v57.75h34.5v-57.15C246.78,19.31,228.44.38,205.88,0h-26.97s0,0,0,0c-10.99,0-21.32,4.22-29.17,11.94-8.02,7.89-12.44,18.42-12.44,29.67v80.07c0,4.62,2.01,9.01,5.5,12.03l67.86,56.73c1.02.89,1.61,2.17,1.61,3.52v125.47c0,2.01-.83,3.98-2.29,5.41-1.34,1.32-3.04,2.03-4.82,2.03h-26.26s-.08,0-.12,0c-3.85-.06-6.99-3.25-6.99-7.11v-123.03h-34.5v122.44c0,22.89,18.35,41.82,40.9,42.2h26.97c10.97,0,21.33-4.22,29.17-11.94,8.02-7.89,12.44-18.42,12.44-29.67v-136.97c0-4.62-2.01-9.01-5.5-12.03l-62.37-51.98Z" />
+              <path d="M415.91,0h-26.26c-8.75,0-16.32,5.6-23.03,10.23-6.71-4.64-15.39-10.23-24.14-10.23h-26.26c-22.94,0-41.61,18.67-41.61,41.61v320.12h34.5V41.61c0-3.92,3.19-7.11,7.11-7.11h26.26c3.92,0,7.11,3.19,7.11,7.11v320.12h32.95V41.61c0-3.92,3.19-7.11,7.11-7.11h26.26c3.92,0,7.11,3.19,7.11,7.11v320.12h34.5V41.61c0-22.94-18.67-41.61-41.61-41.61Z" />
+              <rect x="829.39" y="0" width="32.95" height="361.55" />
             </svg>
-            <span className="brand-text">Oraya</span>
           </Link>
 
           <div className="nav-links">
@@ -61,6 +56,7 @@ export default function LandingPage() {
             <a href="#capabilities" className="nav-link">Capabilities</a>
             <a href="#models" className="nav-link">Models</a>
             <a href="#showcase" className="nav-link">Showcase</a>
+            <Link href="/distribution" className="nav-link">Distribution</Link>
             <Link href="/pricing" className="nav-link">Pricing</Link>
             <a href="#faq" className="nav-link">FAQ</a>
           </div>
@@ -92,230 +88,17 @@ export default function LandingPage() {
 
             <div className="hero-actions">
               <Link href="/pricing" className="btn">
-                Get generation minutes
+                Get generation credits
               </Link>
               <a href="#workflow" className="btn secondary">
                 See how it works
               </a>
             </div>
 
-            {/* Product demo: Oraya Studio as a real app shell — sidebar
-                navigation plus a script-upload creation screen, in Oraya's
-                own dark, aura-lit visual language. */}
-            <div className="hero-stage">
-              <aside className="stage-sidebar">
-                <div className="stage-brand">
-                  <svg className="stage-brand-mark" viewBox="0 0 120 120">
-                    <defs>
-                      <radialGradient id="g-stage" cx="35%" cy="35%" r="75%">
-                        <stop offset="0%" stopColor="#F2871E" />
-                        <stop offset="45%" stopColor="#E5502E" />
-                        <stop offset="100%" stopColor="#D6407A" />
-                      </radialGradient>
-                    </defs>
-                    <circle cx="52" cy="62" r="36" fill="none" stroke="currentColor" strokeWidth="6" />
-                    <circle cx="82" cy="34" r="18" fill="url(#g-stage)" />
-                  </svg>
-                  <span>Oraya</span>
-                </div>
-
-                <button type="button" className="stage-workspace">
-                  <span className="workspace-dot" />
-                  My Studio
-                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                    <path d="M2.5 4.5l3.5 3.5 3.5-3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </button>
-
-                <div className="stage-nav-group">
-                  <div className="stage-nav-label">Create</div>
-                  <button
-                    type="button"
-                    className={heroNav === "script" ? "stage-nav-item active" : "stage-nav-item"}
-                    onClick={() => setHeroNav("script")}
-                  >
-                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
-                      <path d="M2 6h12v7a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6z" stroke="currentColor" strokeWidth="1.3" />
-                      <path d="M2 6l1.4-3h2.1L4.1 6M6.7 6l1.4-3h2.1L8.8 6M11.4 6l1.4-3h1.2l-1 3" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
-                    </svg>
-                    Script to Film
-                  </button>
-                  <button
-                    type="button"
-                    className={heroNav === "storyboard" ? "stage-nav-item active" : "stage-nav-item"}
-                    onClick={() => setHeroNav("storyboard")}
-                  >
-                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
-                      <rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.2" />
-                      <rect x="9" y="2" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.2" />
-                      <rect x="2" y="9" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.2" />
-                      <rect x="9" y="9" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.2" />
-                    </svg>
-                    Storyboard
-                  </button>
-                  <button
-                    type="button"
-                    className={heroNav === "recut" ? "stage-nav-item active" : "stage-nav-item"}
-                    onClick={() => setHeroNav("recut")}
-                  >
-                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
-                      <path d="M13 8A5 5 0 1 1 8 3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
-                      <path d="M8 1l2 2-2 2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    Re-cut Studio
-                  </button>
-                </div>
-
-                <div className="stage-nav-group">
-                  <div className="stage-nav-label">My</div>
-                  <button
-                    type="button"
-                    className={heroNav === "projects" ? "stage-nav-item active" : "stage-nav-item"}
-                    onClick={() => setHeroNav("projects")}
-                  >
-                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
-                      <path d="M8 2l5.2 3v6L8 14l-5.2-3V5L8 2z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
-                      <path d="M8 8v6M8 8L2.8 5M8 8l5.2-3" stroke="currentColor" strokeWidth="1.2" />
-                    </svg>
-                    Projects
-                  </button>
-                  <button
-                    type="button"
-                    className={heroNav === "assets" ? "stage-nav-item active" : "stage-nav-item"}
-                    onClick={() => setHeroNav("assets")}
-                  >
-                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
-                      <path d="M2 4.5A1.5 1.5 0 0 1 3.5 3h2.6l1.2 1.5H12.5A1.5 1.5 0 0 1 14 6v6a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 12V4.5z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
-                    </svg>
-                    Assets
-                  </button>
-                </div>
-
-                <div className="stage-nav-group">
-                  <div className="stage-nav-label">Configure</div>
-                  <button
-                    type="button"
-                    className={heroNav === "team" ? "stage-nav-item active" : "stage-nav-item"}
-                    onClick={() => setHeroNav("team")}
-                  >
-                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
-                      <circle cx="6" cy="6" r="2" stroke="currentColor" strokeWidth="1.2" />
-                      <path d="M2.3 13c0-2 1.7-3.5 3.7-3.5s3.7 1.5 3.7 3.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-                      <circle cx="11.6" cy="5.4" r="1.6" stroke="currentColor" strokeWidth="1.1" />
-                      <path d="M9.9 9.1c.5-.3 1.1-.4 1.7-.4 1.7 0 3.1 1.3 3.1 3" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" />
-                    </svg>
-                    Team
-                  </button>
-                  <button
-                    type="button"
-                    className={heroNav === "usage" ? "stage-nav-item active" : "stage-nav-item"}
-                    onClick={() => setHeroNav("usage")}
-                  >
-                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
-                      <path d="M3 13V7M8 13V3M13 13V9" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-                    </svg>
-                    Usage
-                  </button>
-                  <button
-                    type="button"
-                    className={heroNav === "watermark" ? "stage-nav-item active" : "stage-nav-item"}
-                    onClick={() => setHeroNav("watermark")}
-                  >
-                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
-                      <path d="M8 2l4.5 1.8v3.4c0 2.9-1.9 4.9-4.5 6.2-2.6-1.3-4.5-3.3-4.5-6.2V3.8L8 2z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
-                    </svg>
-                    Watermark
-                  </button>
-                </div>
-              </aside>
-
-              <div className="stage-main">
-                <h3 className="stage-headline">
-                  Upload a script to generate your <span className="accent">first shot</span>.
-                </h3>
-
-                <div className="stage-dropzone">
-                  <div className="dropzone-icons">
-                    <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
-                      <path d="M4 2h5l3 3v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" stroke="currentColor" strokeWidth="1.1" />
-                      <path d="M9 2v3h3" stroke="currentColor" strokeWidth="1.1" />
-                    </svg>
-                    <svg width="22" height="22" viewBox="0 0 16 16" fill="none">
-                      <path d="M1.8 3.3c1.6-.8 3.3-.8 4.7 0v8.6c-1.4-.8-3.1-.8-4.7 0V3.3zM14.2 3.3c-1.6-.8-3.3-.8-4.7 0v8.6c1.4-.8 3.1-.8 4.7 0V3.3z" stroke="currentColor" strokeWidth="1.1" strokeLinejoin="round" />
-                    </svg>
-                    <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
-                      <path d="M4 2h5l3 3v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" stroke="currentColor" strokeWidth="1.1" />
-                      <path d="M9 2v3h3" stroke="currentColor" strokeWidth="1.1" />
-                    </svg>
-                  </div>
-                  <p>Drop or click to upload your screenplay — DOC, TXT, PDF, FDX, max 20MB.</p>
-                </div>
-
-                <div className="stage-controls">
-                  <div className="mode-toggle">
-                    <button
-                      type="button"
-                      className={heroMode === "director" ? "mode-btn active" : "mode-btn"}
-                      onClick={() => setHeroMode("director")}
-                    >
-                      Director Mode
-                    </button>
-                    <button
-                      type="button"
-                      className={heroMode === "manual" ? "mode-btn active" : "mode-btn"}
-                      onClick={() => setHeroMode("manual")}
-                    >
-                      Manual
-                    </button>
-                  </div>
-
-                  <div className="stage-dropdown">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                      <rect x="2" y="4.5" width="12" height="7" rx="1.2" stroke="currentColor" strokeWidth="1.2" />
-                    </svg>
-                    16:9
-                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                      <path d="M2.5 4.5l3.5 3.5 3.5-3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-
-                  <div className="stage-dropdown">
-                    4K
-                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                      <path d="M2.5 4.5l3.5 3.5 3.5-3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-
-                  <div className="stage-dropdown style-select">
-                    <span className="style-swatch" />
-                    Anamorphic Noir
-                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                      <path d="M2.5 4.5l3.5 3.5 3.5-3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                </div>
-
-                <button type="button" className="stage-cta">
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M8 1l1.2 4.8L14 7l-4.8 1.2L8 13l-1.2-4.8L2 7l4.8-1.2L8 1z" />
-                  </svg>
-                  Generate Scene
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Showreel — real generated clips (not stock footage), demonstrating
-            range across macro, action, fashion, and architectural moves. */}
-        <section id="showreel">
-          <div className="wrap">
-            <div className="kicker">Showreel</div>
-            <h2>Generated entirely from a prompt.</h2>
-            <p className="lede">
-              No stock footage, no reshoots — just a script and a style, turned into motion.
-            </p>
-
+            {/* Showreel-in-hero: real generated clips (not stock footage,
+                not a UI mockup) standing in as the hero's visual proof —
+                trimmed to a hero-scaled 3-col grid, no in-grid CTA since
+                the two buttons above already cover that job. */}
             <div className="masonry-grid">
               <div className="masonry-item tall">
                 <video src="/masonry-grid/Macro_push_in_on_iris.mp4" autoPlay loop muted playsInline />
@@ -361,7 +144,7 @@ export default function LandingPage() {
         <section id="workflow" className="section-light">
           <div className="wrap">
             <div className="kicker">Pipeline</div>
-            <h2>How production works in Oraya</h2>
+            <h2>How production works in Osmosis</h2>
             <p className="lede">
               A studio built specifically for directors: turn written narrative into continuous, consistent cinematic footage.
             </p>
@@ -416,9 +199,9 @@ export default function LandingPage() {
                   <svg className="cap-feature-mark" viewBox="0 0 120 120">
                     <defs>
                       <radialGradient id="g-cap" cx="35%" cy="35%" r="75%">
-                        <stop offset="0%" stopColor="#F2871E" />
-                        <stop offset="45%" stopColor="#E5502E" />
-                        <stop offset="100%" stopColor="#D6407A" />
+                        <stop offset="0%" stopColor="#EAFFA0" />
+                        <stop offset="45%" stopColor="#DCFF50" />
+                        <stop offset="100%" stopColor="#A9CC28" />
                       </radialGradient>
                     </defs>
                     <circle cx="52" cy="62" r="36" fill="none" stroke="currentColor" strokeWidth="6" />
@@ -498,14 +281,14 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Models — the real generation engines behind Oraya, sourced from
+        {/* Models — the real generation engines behind Osmosis, sourced from
             the BytePlus/SeeDance partnership deck rather than invented names. */}
         <section id="models" className="section-light">
           <div className="wrap">
             <div className="kicker">Engine</div>
             <h2>The models powering every generation.</h2>
             <p className="lede">
-              Oraya runs on BytePlus&rsquo;s SeeDance and SeeDream — the same industrial-grade models behind ByteDance&rsquo;s own AI video and image pipelines.
+              Osmosis runs on BytePlus&rsquo;s SeeDance and SeeDream — the same industrial-grade models behind ByteDance&rsquo;s own AI video and image pipelines.
             </p>
 
             <div className="models-grid">
@@ -561,7 +344,7 @@ export default function LandingPage() {
                 <div className="model-card-tag">Image · Stills</div>
                 <h3>SeeDream</h3>
                 <p>
-                  ByteDance&rsquo;s companion image model, used across Oraya for storyboard frames, character designs, and reference stills that feed into SeeDance generations.
+                  ByteDance&rsquo;s companion image model, used across Osmosis for storyboard frames, character designs, and reference stills that feed into SeeDance generations.
                 </p>
                 <div className="model-specs">
                   <div className="model-spec-row">
@@ -631,6 +414,51 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* Distribution teaser — the pipeline doesn't end at render;
+            links out to the dedicated /distribution page for the full
+            mechanics (revenue share terms, FAQ). */}
+        <section id="distribution" className="section-light">
+          <div className="wrap">
+            <div className="kicker">Distribution</div>
+            <h2>Your film doesn&rsquo;t stop at render.</h2>
+            <p className="lede">
+              Publish straight to the Osmosis feed, reach viewers built for vertical, phone-first stories, and earn a revenue share on every view.
+            </p>
+
+            <div className="pipeline-grid">
+              <div className="pipeline-card">
+                <div className="num">01</div>
+                <h3>Publish in one tap</h3>
+                <p>
+                  Send your finished cut straight from Re-cut Studio to the Osmosis feed — auto-formatted for vertical, phone-first playback.
+                </p>
+              </div>
+
+              <div className="pipeline-card">
+                <div className="num">02</div>
+                <h3>Reach a built-in audience</h3>
+                <p>
+                  Get discovered by viewers already watching short, serialized vertical series across the Osmosis distribution network.
+                </p>
+              </div>
+
+              <div className="pipeline-card">
+                <div className="num">03</div>
+                <h3>Earn as you&rsquo;re watched</h3>
+                <p>
+                  Collect a revenue share on every view, with optional licensing to partner platforms as your series grows.
+                </p>
+              </div>
+            </div>
+
+            <div className="distribution-teaser-cta">
+              <Link href="/distribution" className="btn secondary">
+                See how distribution works
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Authoritative Pricing Section (per lib/plans.ts) */}
         <section id="pricing">
           <div className="wrap">
@@ -649,7 +477,7 @@ export default function LandingPage() {
                     <span className="amt">{plan.points.toLocaleString()}</span>
                     <span className="lbl">credits</span>
                   </div>
-                  <div className="pricing-rate">≈{plan.minutes} min of generation · ₦{plan.perSecondNaira} / second</div>
+                  <div className="pricing-rate">₦{plan.perSecondNaira} / second · 2 points = 1s</div>
                   <div className="pricing-row">
                     <span className="listed">₦{plan.listedNaira.toLocaleString()}</span>
                     <span className="vat">+ VAT</span>
@@ -657,6 +485,48 @@ export default function LandingPage() {
                   <div className="pricing-sub">
                     ₦{plan.totalNaira.toLocaleString()} total
                   </div>
+
+                  {plan.modelLineup && (
+                    <div className="pricing-models-card">
+                      <div className="models-card-header">
+                        <div className="models-card-title-wrap">
+                          <span className="models-card-title">
+                            ACCESS TO <span className="highlight-cyan">{plan.modelLineup.header}</span>
+                          </span>
+                          <span className="models-card-sub">{plan.modelLineup.subtitle}</span>
+                        </div>
+                        <div className="models-card-icon-badge" aria-hidden="true">
+                          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                            <rect x="1" y="6" width="2.2" height="8" rx="1.1" />
+                            <rect x="5" y="2" width="2.2" height="12" rx="1.1" />
+                            <rect x="9" y="5" width="2.2" height="9" rx="1.1" />
+                            <rect x="13" y="1" width="2.2" height="13" rx="1.1" />
+                          </svg>
+                        </div>
+                      </div>
+
+                      <div className="models-card-rows">
+                        {plan.modelLineup.models.map((model, idx) => (
+                          <div key={idx} className="model-access-row">
+                            <div className="model-name-wrap">
+                              <svg className="model-row-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                                <rect x="1" y="6" width="2.2" height="8" rx="1.1" />
+                                <rect x="5" y="2" width="2.2" height="12" rx="1.1" />
+                                <rect x="9" y="5" width="2.2" height="9" rx="1.1" />
+                                <rect x="13" y="1" width="2.2" height="13" rx="1.1" />
+                              </svg>
+                              <span className="model-name">{model.name}</span>
+                            </div>
+                            <div className="model-badges">
+                              <span className="badge-resolution">{model.resolution}</span>
+                              <span className="badge-access">{model.access}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
                   <Link href={`/checkout?plan=${plan.id}`} className="btn">
                     Choose {plan.name}
                   </Link>
@@ -710,18 +580,15 @@ export default function LandingPage() {
         <div className="wrap footer-inner">
           <div>
             <div className="nav-brand">
-              <svg className="nav-mark" viewBox="0 0 120 120">
-                <defs>
-                  <radialGradient id="g-foot" cx="35%" cy="35%" r="75%">
-                    <stop offset="0%" stopColor="#F2871E" />
-                    <stop offset="45%" stopColor="#E5502E" />
-                    <stop offset="100%" stopColor="#D6407A" />
-                  </radialGradient>
-                </defs>
-                <circle cx="52" cy="62" r="36" fill="none" stroke="currentColor" strokeWidth="6" />
-                <circle cx="82" cy="34" r="18" fill="url(#g-foot)" />
+              <svg className="brand-wordmark" viewBox="0 0 999.64 361.72" fill="currentColor" aria-label="Osmosis">
+                <path d="M67.87,0h-26.26C18.67,0,0,18.67,0,41.61v278.17c0,22.94,18.67,41.61,41.61,41.61h26.26c22.94,0,41.61-18.67,41.61-41.61V41.61C109.48,18.67,90.81,0,67.87,0ZM74.98,319.78c0,3.92-3.19,7.11-7.11,7.11h-26.26c-3.92,0-7.11-3.19-7.11-7.11V41.61c0-3.92,3.19-7.11,7.11-7.11h26.26c3.92,0,7.11,3.19,7.11,7.11v278.17Z" />
+                <path d="M622.65,0h-95.7c-22.94,0-41.61,18.67-41.61,41.61v278.17c0,22.94,18.67,41.61,41.61,41.61h95.7c22.94,0,41.61-18.67,41.61-41.61V41.61c0-22.94-18.67-41.61-41.61-41.61ZM629.76,319.78c0,3.92-3.19,7.11-7.11,7.11h-95.7c-3.92,0-7.11-3.19-7.11-7.11V41.61c0-3.92,3.19-7.11,7.11-7.11h95.7c3.92,0,7.11,3.19,7.11,7.11v278.17Z" />
+                <path d="M931.77,118.79l-3.81-3.29c-2.1-1.81-3.3-4.45-3.3-7.22V41.95c0-2,.83-3.98,2.29-5.41,1.34-1.32,3.03-2.04,4.82-2.04h26.38c3.85.06,6.99,3.25,6.99,7.1v57.75h34.5v-57.15C999.64,19.31,981.29.38,958.74,0h-26.97s0,0,0,0c-10.99,0-21.32,4.22-29.17,11.94-8.02,7.89-12.44,18.42-12.44,29.67v80.07c0,4.62,2.01,9.01,5.5,12.03l67.86,56.73c1.02.89,1.61,2.17,1.61,3.52v125.47c0,2.01-.83,3.98-2.29,5.41-1.34,1.32-3.04,2.03-4.82,2.03h-26.26s-.08,0-.12,0c-3.85-.06-6.99-3.25-6.99-7.11v-123.03h-34.5v122.44c0,22.89,18.35,41.82,40.9,42.2h26.97c10.97,0,21.33-4.22,29.17-11.94,8.02-7.89,12.44-18.42,12.44-29.67v-136.97c0-4.62-2.01-9.01-5.5-12.03l-62.37-51.98Z" />
+                <path d="M733.69,118.79l-3.81-3.29c-2.1-1.81-3.3-4.45-3.3-7.22V41.95c0-2,.83-3.98,2.29-5.41,1.34-1.32,3.03-2.04,4.82-2.04h26.38c3.85.06,6.99,3.25,6.99,7.1v57.75h34.5v-57.15C801.56,19.31,783.21.38,760.66,0h-26.97s0,0,0,0c-10.99,0-21.32,4.22-29.17,11.94-8.02,7.89-12.44,18.42-12.44,29.67v80.07c0,4.62,2.01,9.01,5.5,12.03l67.86,56.73c1.02.89,1.61,2.17,1.61,3.52v125.47c0,2.01-.83,3.98-2.29,5.41-1.34,1.32-3.04,2.03-4.82,2.03h-26.26s-.08,0-.12,0c-3.85-.06-6.99-3.25-6.99-7.11v-123.03h-34.5v122.44c0,22.89,18.35,41.82,40.9,42.2h26.97c10.97,0,21.33-4.22,29.17-11.94,8.02-7.89,12.44-18.42,12.44-29.67v-136.97c0-4.62-2.01-9.01-5.5-12.03l-62.37-51.98Z" />
+                <path d="M178.91,118.79l-3.81-3.29c-2.1-1.81-3.3-4.45-3.3-7.22V41.95c0-2,.83-3.98,2.29-5.41,1.34-1.32,3.03-2.04,4.82-2.04h26.38c3.85.06,6.99,3.25,6.99,7.1v57.75h34.5v-57.15C246.78,19.31,228.44.38,205.88,0h-26.97s0,0,0,0c-10.99,0-21.32,4.22-29.17,11.94-8.02,7.89-12.44,18.42-12.44,29.67v80.07c0,4.62,2.01,9.01,5.5,12.03l67.86,56.73c1.02.89,1.61,2.17,1.61,3.52v125.47c0,2.01-.83,3.98-2.29,5.41-1.34,1.32-3.04,2.03-4.82,2.03h-26.26s-.08,0-.12,0c-3.85-.06-6.99-3.25-6.99-7.11v-123.03h-34.5v122.44c0,22.89,18.35,41.82,40.9,42.2h26.97c10.97,0,21.33-4.22,29.17-11.94,8.02-7.89,12.44-18.42,12.44-29.67v-136.97c0-4.62-2.01-9.01-5.5-12.03l-62.37-51.98Z" />
+                <path d="M415.91,0h-26.26c-8.75,0-16.32,5.6-23.03,10.23-6.71-4.64-15.39-10.23-24.14-10.23h-26.26c-22.94,0-41.61,18.67-41.61,41.61v320.12h34.5V41.61c0-3.92,3.19-7.11,7.11-7.11h26.26c3.92,0,7.11,3.19,7.11,7.11v320.12h32.95V41.61c0-3.92,3.19-7.11,7.11-7.11h26.26c3.92,0,7.11,3.19,7.11,7.11v320.12h34.5V41.61c0-22.94-18.67-41.61-41.61-41.61Z" />
+                <rect x="829.39" y="0" width="32.95" height="361.55" />
               </svg>
-              <span className="brand-text">Oraya</span>
             </div>
             <p className="footer-note">
               The first AI studio engineered for directors, visual storytellers, and independent film creators.
@@ -736,6 +603,7 @@ export default function LandingPage() {
                 <li><a href="#capabilities">Capabilities</a></li>
                 <li><a href="#models">Models</a></li>
                 <li><a href="#showcase">Showcase</a></li>
+                <li><Link href="/distribution">Distribution</Link></li>
                 <li><Link href="/pricing">Pricing</Link></li>
               </ul>
             </div>
@@ -744,7 +612,7 @@ export default function LandingPage() {
               <h5>Direct</h5>
               <ul>
                 <li><a href="#faq">FAQ</a></li>
-                <li><a href="mailto:hello@technologymedia.global">Contact</a></li>
+                <li><a href="mailto:info@osmosisone.com">Contact</a></li>
                 <li><Link href="/checkout">Checkout Portal</Link></li>
               </ul>
             </div>
@@ -752,7 +620,7 @@ export default function LandingPage() {
         </div>
 
         <div className="wrap footer-bottom">
-          <span>&copy; {new Date().getFullYear()} Oraya. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} Osmosis. All rights reserved.</span>
           <span>Secured by Paystack &amp; Resend</span>
         </div>
       </footer>

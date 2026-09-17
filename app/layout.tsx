@@ -21,8 +21,11 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Oraya — Direct your first film with AI",
+  title: "Osmosis — Direct your first film with AI",
   description: "Script to storyboard to final render — buy generation time and start today.",
+  icons: {
+    icon: "/brand/logo/logo-icon.svg",
+  },
 };
 
 export default function RootLayout({

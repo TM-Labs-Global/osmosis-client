@@ -5,11 +5,11 @@
   --screen: #F1F1F2;
   --screen-dim: #9C9BA3;
   --grey: #8C8A92;
-  --aura-solid: #E5502E;
-  --aura: radial-gradient(circle at 30% 30%, #F2871E 0%, #E5502E 45%, #D6407A 100%);
+  --aura-solid: #DCFF50;
+  --aura: radial-gradient(circle at 30% 30%, #EAFFA0 0%, #DCFF50 45%, #A9CC28 100%);
   --line: rgba(241, 241, 242, 0.10);
   --line-strong: rgba(241, 241, 242, 0.18);
-  --on-accent: #FFFFFF;
+  --on-accent: #020202;
 }
 
 * {
@@ -69,17 +69,11 @@ a {
   gap: 12px;
 }
 
-.nav-mark {
-  width: 24px;
-  height: 24px;
+.brand-wordmark {
+  height: 22px;
+  width: auto;
   flex: none;
-}
-
-.brand-text {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 22px;
-  letter-spacing: -0.01em;
+  color: var(--screen);
 }
 
 .nav-links {
@@ -227,266 +221,11 @@ a {
 }
 
 /* Pill-shaped and sized to match the product demo card's own buttons
-   and chips (.stage-cta, .mode-toggle, .stage-dropdown are all 999px
-   pills at ~13-14px) — scoped here so pricing's shared .btn is
-   untouched. */
+   and chips are all 999px pills at ~13-14px) — scoped here so
+   pricing's shared .btn is untouched. */
 .hero-actions .btn {
   border-radius: 999px;
   font-size: 14px;
-}
-
-/* Product demo: a full app-shell mockup (sidebar nav + a script-upload
-   creation screen), echoing the structure of a real AI video tool but
-   in Oraya's own dark, aura-lit visual language. Pinned to the dark
-   token set directly, regardless of the hero section's own light/dark
-   scoping — this is the one deliberately "lit room" moment, per the
-   brand guidelines, on an otherwise light hero. */
-.hero-stage {
-  display: flex;
-  align-items: stretch;
-  border: 1px solid rgba(241, 241, 242, 0.10);
-  background: #1D1D20;
-  border-radius: 18px;
-  overflow: hidden;
-  text-align: left;
-  min-height: 420px;
-  --ink: #141416;
-  --ink-2: #1D1D20;
-  --ink-3: #242428;
-  --screen: #F1F1F2;
-  --screen-dim: #9C9BA3;
-  --grey: #8C8A92;
-  --line: rgba(241, 241, 242, 0.10);
-  --line-strong: rgba(241, 241, 242, 0.18);
-}
-
-.stage-sidebar {
-  flex: 0 0 208px;
-  background: var(--ink);
-  border-right: 1px solid var(--line);
-  padding: 20px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.stage-brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 6px;
-  color: var(--screen);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 15px;
-}
-
-.stage-brand-mark {
-  width: 20px;
-  height: 20px;
-  color: var(--screen);
-}
-
-.stage-workspace {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--ink-2);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 8px 10px;
-  color: var(--screen-dim);
-  font-family: var(--font-body);
-  font-size: 12.5px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.stage-workspace svg {
-  margin-left: auto;
-}
-
-.workspace-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--aura);
-  flex-shrink: 0;
-}
-
-.stage-nav-group {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.stage-nav-label {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--grey);
-  padding: 0 10px;
-  margin-bottom: 6px;
-}
-
-.stage-nav-item {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 8px 10px;
-  border-radius: 9px;
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--screen-dim);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  width: 100%;
-}
-
-.stage-nav-item:hover {
-  color: var(--screen);
-}
-
-.stage-nav-item.active {
-  background: color-mix(in srgb, var(--aura-solid) 14%, transparent);
-  color: var(--screen);
-}
-
-.stage-nav-item.active svg {
-  color: var(--aura-solid);
-}
-
-.stage-main {
-  flex: 1;
-  min-width: 0;
-  padding: 40px 36px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 22px;
-}
-
-.stage-headline {
-  font-family: var(--font-display);
-  font-size: clamp(20px, 2.2vw, 26px);
-  font-weight: 600;
-  color: var(--screen);
-  margin: 0;
-  max-width: 32ch;
-}
-
-.stage-headline .accent {
-  color: var(--aura-solid);
-}
-
-.stage-dropzone {
-  width: 100%;
-  max-width: 560px;
-  border: 1.5px dashed var(--line-strong);
-  border-radius: 16px;
-  padding: 32px 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
-
-.dropzone-icons {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--screen-dim);
-}
-
-.stage-dropzone p {
-  margin: 0;
-  font-size: 13px;
-  color: var(--grey);
-  max-width: 40ch;
-}
-
-.stage-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.mode-toggle {
-  display: inline-flex;
-  align-items: center;
-  background: var(--ink);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 3px;
-  gap: 2px;
-}
-
-.mode-btn {
-  font-family: var(--font-body);
-  font-size: 12.5px;
-  font-weight: 500;
-  color: var(--grey);
-  background: transparent;
-  border: none;
-  border-radius: 999px;
-  padding: 7px 14px;
-  cursor: pointer;
-}
-
-.mode-btn.active {
-  background: color-mix(in srgb, var(--aura-solid) 16%, transparent);
-  color: var(--screen);
-}
-
-.stage-dropdown {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--ink);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 8px 12px;
-  font-family: var(--font-body);
-  font-size: 12.5px;
-  font-weight: 500;
-  color: var(--screen-dim);
-  white-space: nowrap;
-}
-
-.style-swatch {
-  width: 14px;
-  height: 14px;
-  border-radius: 4px;
-  background: var(--aura);
-  flex-shrink: 0;
-}
-
-.stage-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--aura);
-  color: #FFFFFF;
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 14px;
-  border: none;
-  border-radius: 999px;
-  padding: 12px 24px;
-  cursor: pointer;
-  transition: opacity 0.15s ease;
-}
-
-.stage-cta:hover {
-  opacity: 0.93;
 }
 
 /* =========================================================
@@ -516,6 +255,7 @@ section {
   --grey: #6E6D74;
   --line: rgba(23, 23, 26, 0.10);
   --line-strong: rgba(23, 23, 26, 0.18);
+  --aura-solid: #4F6900;
 }
 
 section:last-of-type {
@@ -644,6 +384,10 @@ section h2 {
   margin: 0;
 }
 
+.distribution-teaser-cta {
+  margin-top: 32px;
+}
+
 /* =========================================================
    Capabilities
    ========================================================= */
@@ -744,7 +488,7 @@ section h2 {
   height: 6px;
   border-radius: 50%;
   background: var(--aura-solid);
-  box-shadow: 0 0 6px rgba(229, 80, 46, 0.8);
+  box-shadow: 0 0 6px rgba(220, 255, 80, 0.8);
 }
 
 .cap-feature-mark {
@@ -836,8 +580,8 @@ section h2 {
 }
 
 /* =========================================================
-   Models — pinned-dark spec cards on a light section, same
-   token-override technique as .hero-stage, so they read correctly
+   Models — pinned-dark spec cards on a light section: each card
+   re-declares its own dark token set so it reads correctly
    regardless of the section's light/dark scope.
    ========================================================= */
 
@@ -856,6 +600,7 @@ section h2 {
   --grey: #8c8a92;
   --line: rgba(241, 241, 242, 0.1);
   --line-strong: rgba(241, 241, 242, 0.18);
+  --aura-solid: #DCFF50;
   background: var(--ink);
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -1009,7 +754,7 @@ section h2 {
   font-size: 11px;
   /* Always light text on this chip's own always-dark background —
      hardcoded on purpose, independent of the section's light/dark
-     token scope (see .stage-viewport below for the same reasoning). */
+     token scope. */
   color: #F1F1F2;
   background: rgba(20, 20, 22, 0.85);
   border: 1px solid rgba(241, 241, 242, 0.10);
@@ -1067,7 +812,7 @@ section h2 {
   top: -13px;
   left: 24px;
   background: var(--aura);
-  color: #fff;
+  color: var(--on-accent);
   font-family: var(--font-body);
   font-size: 11.5px;
   font-weight: 600;
@@ -1092,6 +837,17 @@ section h2 {
 .pricing-page-header .lede {
   margin-left: auto;
   margin-right: auto;
+}
+
+.distribution-cta-wrap {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.distribution-cta-wrap .distribution-teaser-cta {
+  display: flex;
+  justify-content: center;
 }
 
 .pricing-credits {
@@ -1140,8 +896,153 @@ section h2 {
 .pricing-sub {
   font-size: 13px;
   color: var(--screen-dim);
-  margin: 4px 0 28px;
+  margin: 4px 0 20px;
   font-family: var(--font-mono);
+}
+
+/* Higgsfield-style Model Access Badge inside Pricing Card */
+.pricing-models-card {
+  background: radial-gradient(130% 120% at 50% 0%, #0d234d 0%, #08152e 60%, #050d1e 100%);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  box-shadow: 0 12px 30px -8px rgba(2, 8, 20, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 14px 14px 12px;
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-models-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.7), transparent);
+}
+
+.models-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.models-card-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.models-card-title {
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.models-card-title .highlight-cyan {
+  color: #38bdf8;
+}
+
+.models-card-sub {
+  font-size: 11.5px;
+  color: #94a3b8;
+  letter-spacing: 0.01em;
+}
+
+.models-card-icon-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cbd5e1;
+  flex-shrink: 0;
+}
+
+.models-card-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.model-access-row {
+  background: rgba(8, 18, 38, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.14);
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.model-access-row:hover {
+  background: rgba(12, 26, 56, 0.85);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.model-name-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.model-row-icon {
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
+.model-name {
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #f8fafc;
+  white-space: nowrap;
+}
+
+.model-badges {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.badge-resolution {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 2px 6px;
+  border-radius: 4px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.badge-access {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .disclosures-wrap {
@@ -1310,10 +1211,8 @@ footer {
   color: var(--screen);
 }
 
-.brand-name {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 700;
+.brand-link .brand-wordmark {
+  height: 24px;
 }
 
 .checkout-grid {
@@ -1389,7 +1288,7 @@ footer {
 
 .tag-recommended {
   background: var(--aura);
-  color: #fff;
+  color: var(--on-accent);
   font-size: 11px;
   font-weight: 600;
   padding: 4px 10px;
@@ -1525,7 +1424,7 @@ footer {
   font-weight: 600;
   cursor: pointer;
   background: var(--aura);
-  color: #fff;
+  color: var(--on-accent);
   transition: opacity 0.15s ease;
   margin-bottom: 24px;
 }
@@ -1665,15 +1564,6 @@ footer {
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
-  }
-  .hero-stage {
-    min-height: 0;
-  }
-  .stage-sidebar {
-    display: none;
-  }
-  .stage-main {
-    padding: 28px 20px;
   }
   .hero-top-right {
     flex: 1 1 auto;

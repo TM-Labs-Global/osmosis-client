@@ -11,13 +11,13 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Replace with a verified sending domain in Resend before going live —
 // Resend will reject sends from an unverified domain.
-const FROM_ADDRESS = process.env.RESEND_FROM_EMAIL || "Oraya <hello@oraya.example>";
+const FROM_ADDRESS = process.env.RESEND_FROM_EMAIL || "Osmosis <info@osmosisone.com>";
 
 export async function sendPaymentConfirmationEmail(to: string, planName: string, points?: number) {
   return resend.emails.send({
     from: FROM_ADDRESS,
     to,
-    subject: "You're in — welcome to Oraya",
+    subject: "You're in — welcome to Osmosis",
     html: paymentConfirmationTemplate(planName, points),
   });
 }
@@ -33,14 +33,29 @@ export async function sendTeamNotificationEmail(
   return resend.emails.send({
     from: FROM_ADDRESS,
     to,
-    subject: `🚨 [Action Required] New Oraya Order: ${planName} (${customerEmail})`,
+    subject: `🚨 [Action Required] New Osmosis Order: ${planName} (${customerEmail})`,
     html: teamNotificationTemplate(customerEmail, planName, points, reference, amountPaidNaira),
   });
 }
 
+export async function addCustomerToAudience(email: string) {
+  const audienceId = process.env.RESEND_GENERAL_AUDIENCE_ID;
+  if (!audienceId) return;
+  try {
+    await resend.contacts.create({
+      email,
+      audienceId,
+      unsubscribed: false,
+    });
+  } catch (err) {
+    console.error("Failed to add customer to Resend audience:", err);
+  }
+}
+
+
 // Kept deliberately simple and light-background: email clients have
 // inconsistent (often nonexistent) dark-mode support, so this doesn't
-// try to reuse Oraya's dark UI theme — just one accent color for the
+// try to reuse Osmosis's dark UI theme — just one accent color for the
 // brand rule, everything else safe, boring, and legible everywhere.
 function paymentConfirmationTemplate(planName: string, points?: number) {
   const pointsLine = points
@@ -53,13 +68,13 @@ function paymentConfirmationTemplate(planName: string, points?: number) {
     <table role="presentation" width="100%" style="max-width:480px; margin:0 auto; background:#ffffff; border-radius:12px; overflow:hidden;">
       <tr>
         <td style="padding:32px 32px 0;">
-          <div style="font-size:20px; font-weight:700; letter-spacing:-0.01em; color:#141416;">Oraya</div>
-          <div style="height:3px; width:40px; background:#E5502E; margin-top:12px; border-radius:2px;"></div>
+          <div style="font-size:20px; font-weight:700; letter-spacing:-0.01em; color:#141416;">Osmosis</div>
+          <div style="height:3px; width:40px; background:#DCFF50; margin-top:12px; border-radius:2px;"></div>
         </td>
       </tr>
       <tr>
         <td style="padding:28px 32px 8px;">
-          <h1 style="font-size:22px; margin:0 0 16px; color:#141416;">Payment received — welcome to Oraya.</h1>
+          <h1 style="font-size:22px; margin:0 0 16px; color:#141416;">Payment received — welcome to Osmosis.</h1>
           <p style="font-size:15px; line-height:1.6; color:#4b4b4f; margin:0 0 16px;">
             You're signed up for the <strong>${planName}</strong> package. We're setting up your
             account by hand right now — your login details will land in this inbox shortly.
@@ -72,7 +87,7 @@ function paymentConfirmationTemplate(planName: string, points?: number) {
       </tr>
       <tr>
         <td style="padding:8px 32px 32px;">
-          <p style="font-size:13px; color:#9c9ba3; margin:0;">— The Oraya team</p>
+          <p style="font-size:13px; color:#9c9ba3; margin:0;">— The Osmosis team</p>
         </td>
       </tr>
     </table>
@@ -91,8 +106,8 @@ function teamNotificationTemplate(
     <table role="presentation" width="100%" style="max-width:520px; margin:0 auto; background:#ffffff; border-radius:12px; overflow:hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
       <tr>
         <td style="padding:32px 32px 0;">
-          <div style="font-size:20px; font-weight:700; color:#141416;">Oraya Operations</div>
-          <div style="height:3px; width:40px; background:#E5502E; margin-top:12px; border-radius:2px;"></div>
+          <div style="font-size:20px; font-weight:700; color:#141416;">Osmosis Operations</div>
+          <div style="height:3px; width:40px; background:#DCFF50; margin-top:12px; border-radius:2px;"></div>
         </td>
       </tr>
       <tr>
