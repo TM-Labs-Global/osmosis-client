@@ -27,8 +27,52 @@ const faqs = [
   },
 ];
 
+const studioScenes = [
+  {
+    id: "scene-1",
+    title: "Scene 01 · Cyber Tunnel",
+    label: "Take 01 · 24 FPS",
+    prompt: "Anamorphic dolly push through illuminated tunnel, volumetric blue haze, 35mm master lens",
+    video: "/masonry-grid/Dolly_push_through_tunnel.mp4",
+  },
+  {
+    id: "scene-2",
+    title: "Scene 02 · Brutalist Tracking",
+    label: "Take 03 · 24 FPS",
+    prompt: "Low-angle wide tracking shot, concrete architectural monoliths, high-contrast chiaroscuro",
+    video: "/masonry-grid/Figure_walking_through_concrete.mp4",
+  },
+  {
+    id: "scene-3",
+    title: "Scene 03 · High-Rise Ascent",
+    label: "Take 02 · 24 FPS",
+    prompt: "Extreme wide panoramic action, glass skyscraper facade reflection, golden hour cinematic grade",
+    video: "/masonry-grid/Figure_climbing_building_facade.mp4",
+  },
+];
+
+// Mobile-only hero visual: the app-shell "product demo" (hero-stage) is a
+// dashboard mockup that doesn't read well on a phone screen. Below the
+// 820px breakpoint it's swapped for this — a horizontally auto-scrolling
+// row of vertical (9:16) generated clips, TikTok/Reels-style, reusing the
+// same showreel assets as the masonry grid further down the page.
+const heroReelClips = [
+  "/masonry-grid/Macro_push_in_on_iris.mp4",
+  "/masonry-grid/Transitioning_from_smartphone_to.mp4",
+  "/masonry-grid/Dolly_push_through_tunnel.mp4",
+  "/masonry-grid/Model_holding_coffee_and_bags_.mp4",
+  "/masonry-grid/Person_tumbling_near_glass_surface_20260917115714.mp4",
+  "/masonry-grid/Person_sprinting_down_street.mp4",
+  "/masonry-grid/Figure_walking_through_concrete.mp4",
+  "/masonry-grid/Person_turning_in_jacket.mp4",
+  "/masonry-grid/Figure_climbing_building_facade.mp4",
+];
+
 export default function LandingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [heroNav, setHeroNav] = useState("script");
+  const [heroMode, setHeroMode] = useState<"director" | "manual">("director");
+  const [activeSceneIndex, setActiveSceneIndex] = useState(0);
 
   function toggleFaq(index: number) {
     setOpenFaq(openFaq === index ? null : index);
@@ -52,13 +96,10 @@ export default function LandingPage() {
           </Link>
 
           <div className="nav-links">
+            <a href="#showreel" className="nav-link">Showreel</a>
             <a href="#workflow" className="nav-link">Workflow</a>
-            <a href="#capabilities" className="nav-link">Capabilities</a>
-            <a href="#models" className="nav-link">Models</a>
-            <a href="#showcase" className="nav-link">Showcase</a>
             <Link href="/distribution" className="nav-link">Distribution</Link>
             <Link href="/pricing" className="nav-link">Pricing</Link>
-            <a href="#faq" className="nav-link">FAQ</a>
           </div>
 
           <Link href="/pricing" className="nav-cta">
@@ -78,6 +119,14 @@ export default function LandingPage() {
                 <h1>Direct your
                   <br />
                   first film with AI.</h1>
+                <div className="hero-actions">
+                  <Link href="/pricing" className="btn">
+                    Get generation credits
+                  </Link>
+                  <a href="#showreel" className="btn secondary">
+                    Watch showreel
+                  </a>
+                </div>
               </div>
               <div className="hero-top-right">
                 <p className="tag">
@@ -86,19 +135,287 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="hero-actions">
-              <Link href="/pricing" className="btn">
-                Get generation credits
-              </Link>
-              <a href="#workflow" className="btn secondary">
-                See how it works
-              </a>
+            {/* Product demo: Osmosis Studio as a real app shell with live landscape video playback */}
+            <div id="studio" className="hero-stage">
+              <aside className="stage-sidebar">
+                <div className="stage-brand">
+                  <svg className="brand-wordmark" viewBox="0 0 999.64 361.72" fill="currentColor" aria-label="Osmosis" style={{ height: "15px", width: "auto" }}>
+                    <path d="M67.87,0h-26.26C18.67,0,0,18.67,0,41.61v278.17c0,22.94,18.67,41.61,41.61,41.61h26.26c22.94,0,41.61-18.67,41.61-41.61V41.61C109.48,18.67,90.81,0,67.87,0ZM74.98,319.78c0,3.92-3.19,7.11-7.11,7.11h-26.26c-3.92,0-7.11-3.19-7.11-7.11V41.61c0-3.92,3.19-7.11,7.11-7.11h26.26c3.92,0,7.11,3.19,7.11,7.11v278.17Z" />
+                    <path d="M622.65,0h-95.7c-22.94,0-41.61,18.67-41.61,41.61v278.17c0,22.94,18.67,41.61,41.61,41.61h95.7c22.94,0,41.61-18.67,41.61-41.61V41.61c0-22.94-18.67-41.61-41.61-41.61ZM629.76,319.78c0,3.92-3.19,7.11-7.11,7.11h-95.7c-3.92,0-7.11-3.19-7.11-7.11V41.61c0-3.92,3.19-7.11,7.11-7.11h95.7c3.92,0,7.11,3.19,7.11,7.11v278.17Z" />
+                    <path d="M931.77,118.79l-3.81-3.29c-2.1-1.81-3.3-4.45-3.3-7.22V41.95c0-2,.83-3.98,2.29-5.41,1.34-1.32,3.03-2.04,4.82-2.04h26.38c3.85.06,6.99,3.25,6.99,7.1v57.75h34.5v-57.15C999.64,19.31,981.29.38,958.74,0h-26.97s0,0,0,0c-10.99,0-21.32,4.22-29.17,11.94-8.02,7.89-12.44,18.42-12.44,29.67v80.07c0,4.62,2.01,9.01,5.5,12.03l67.86,56.73c1.02.89,1.61,2.17,1.61,3.52v125.47c0,2.01-.83,3.98-2.29,5.41-1.34,1.32-3.04,2.03-4.82,2.03h-26.26s-.08,0-.12,0c-3.85-.06-6.99-3.25-6.99-7.11v-123.03h-34.5v122.44c0,22.89,18.35,41.82,40.9,42.2h26.97c10.97,0,21.33-4.22,29.17-11.94,8.02-7.89,12.44-18.42,12.44-29.67v-136.97c0-4.62-2.01-9.01-5.5-12.03l-62.37-51.98Z" />
+                    <path d="M733.69,118.79l-3.81-3.29c-2.1-1.81-3.3-4.45-3.3-7.22V41.95c0-2,.83-3.98,2.29-5.41,1.34-1.32,3.03-2.04,4.82-2.04h26.38c3.85.06,6.99,3.25,6.99,7.1v57.75h34.5v-57.15C801.56,19.31,783.21.38,760.66,0h-26.97s0,0,0,0c-10.99,0-21.32,4.22-29.17,11.94-8.02,7.89-12.44,18.42-12.44,29.67v80.07c0,4.62,2.01,9.01,5.5,12.03l67.86,56.73c1.02.89,1.61,2.17,1.61,3.52v125.47c0,2.01-.83,3.98-2.29,5.41-1.34,1.32-3.04,2.03-4.82,2.03h-26.26s-.08,0-.12,0c-3.85-.06-6.99-3.25-6.99-7.11v-123.03h-34.5v122.44c0,22.89,18.35,41.82,40.9,42.2h26.97c10.97,0,21.33-4.22,29.17-11.94,8.02-7.89,12.44-18.42,12.44-29.67v-136.97c0-4.62-2.01-9.01-5.5-12.03l-62.37-51.98Z" />
+                    <path d="M178.91,118.79l-3.81-3.29c-2.1-1.81-3.3-4.45-3.3-7.22V41.95c0-2,.83-3.98,2.29-5.41,1.34-1.32,3.03-2.04,4.82-2.04h26.38c3.85.06,6.99,3.25,6.99,7.1v57.75h34.5v-57.15C246.78,19.31,228.44.38,205.88,0h-26.97s0,0,0,0c-10.99,0-21.32,4.22-29.17,11.94-8.02,7.89-12.44,18.42-12.44,29.67v80.07c0,4.62,2.01,9.01,5.5,12.03l67.86,56.73c1.02.89,1.61,2.17,1.61,3.52v125.47c0,2.01-.83,3.98-2.29,5.41-1.34,1.32-3.04,2.03-4.82,2.03h-26.26s-.08,0-.12,0c-3.85-.06-6.99-3.25-6.99-7.11v-123.03h-34.5v122.44c0,22.89,18.35,41.82,40.9,42.2h26.97c10.97,0,21.33-4.22,29.17-11.94,8.02-7.89,12.44-18.42,12.44-29.67v-136.97c0-4.62-2.01-9.01-5.5-12.03l-62.37-51.98Z" />
+                    <path d="M415.91,0h-26.26c-8.75,0-16.32,5.6-23.03,10.23-6.71-4.64-15.39-10.23-24.14-10.23h-26.26c-22.94,0-41.61,18.67-41.61,41.61v320.12h34.5V41.61c0-3.92,3.19-7.11,7.11-7.11h26.26c3.92,0,7.11,3.19,7.11,7.11v320.12h32.95V41.61c0-3.92,3.19-7.11,7.11-7.11h26.26c3.92,0,7.11,3.19,7.11,7.11v320.12h34.5V41.61c0-22.94-18.67-41.61-41.61-41.61Z" />
+                    <rect x="829.39" y="0" width="32.95" height="361.55" />
+                  </svg>
+                </div>
+
+                <button type="button" className="stage-workspace">
+                  <span className="workspace-dot" />
+                  My Studio
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                    <path d="M2.5 4.5l3.5 3.5 3.5-3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+
+                <div className="stage-nav-group">
+                  <div className="stage-nav-label">Create</div>
+                  <button
+                    type="button"
+                    className={heroNav === "script" ? "stage-nav-item active" : "stage-nav-item"}
+                    onClick={() => setHeroNav("script")}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                      <path d="M2 6h12v7a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6z" stroke="currentColor" strokeWidth="1.3" />
+                      <path d="M2 6l1.4-3h2.1L4.1 6M6.7 6l1.4-3h2.1L8.8 6M11.4 6l1.4-3h1.2l-1 3" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+                    </svg>
+                    Script to Film
+                  </button>
+                  <button
+                    type="button"
+                    className={heroNav === "storyboard" ? "stage-nav-item active" : "stage-nav-item"}
+                    onClick={() => setHeroNav("storyboard")}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                      <rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.2" />
+                      <rect x="9" y="2" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.2" />
+                      <rect x="2" y="9" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.2" />
+                      <rect x="9" y="9" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.2" />
+                    </svg>
+                    Storyboard
+                  </button>
+                  <button
+                    type="button"
+                    className={heroNav === "recut" ? "stage-nav-item active" : "stage-nav-item"}
+                    onClick={() => setHeroNav("recut")}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                      <path d="M13 8A5 5 0 1 1 8 3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+                      <path d="M8 1l2 2-2 2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    Re-cut Studio
+                  </button>
+                </div>
+
+                <div className="stage-nav-group">
+                  <div className="stage-nav-label">My</div>
+                  <button
+                    type="button"
+                    className={heroNav === "projects" ? "stage-nav-item active" : "stage-nav-item"}
+                    onClick={() => setHeroNav("projects")}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                      <path d="M8 2l5.2 3v6L8 14l-5.2-3V5L8 2z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+                      <path d="M8 8v6M8 8L2.8 5M8 8l5.2-3" stroke="currentColor" strokeWidth="1.2" />
+                    </svg>
+                    Projects
+                  </button>
+                  <button
+                    type="button"
+                    className={heroNav === "assets" ? "stage-nav-item active" : "stage-nav-item"}
+                    onClick={() => setHeroNav("assets")}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                      <path d="M2 4.5A1.5 1.5 0 0 1 3.5 3h2.6l1.2 1.5H12.5A1.5 1.5 0 0 1 14 6v6a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 12V4.5z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+                    </svg>
+                    Assets
+                  </button>
+                </div>
+
+                <div className="stage-nav-group">
+                  <div className="stage-nav-label">Configure</div>
+                  <button
+                    type="button"
+                    className={heroNav === "team" ? "stage-nav-item active" : "stage-nav-item"}
+                    onClick={() => setHeroNav("team")}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                      <circle cx="6" cy="6" r="2" stroke="currentColor" strokeWidth="1.2" />
+                      <path d="M2.3 13c0-2 1.7-3.5 3.7-3.5s3.7 1.5 3.7 3.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                      <circle cx="11.6" cy="5.4" r="1.6" stroke="currentColor" strokeWidth="1.1" />
+                      <path d="M9.9 9.1c.5-.3 1.1-.4 1.7-.4 1.7 0 3.1 1.3 3.1 3" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" />
+                    </svg>
+                    Team
+                  </button>
+                  <button
+                    type="button"
+                    className={heroNav === "usage" ? "stage-nav-item active" : "stage-nav-item"}
+                    onClick={() => setHeroNav("usage")}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                      <path d="M3 13V7M8 13V3M13 13V9" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                    </svg>
+                    Usage
+                  </button>
+                  <button
+                    type="button"
+                    className={heroNav === "watermark" ? "stage-nav-item active" : "stage-nav-item"}
+                    onClick={() => setHeroNav("watermark")}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                      <path d="M8 2l4.5 1.8v3.4c0 2.9-1.9 4.9-4.5 6.2-2.6-1.3-4.5-3.3-4.5-6.2V3.8L8 2z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+                    </svg>
+                    Watermark
+                  </button>
+                </div>
+              </aside>
+
+              <div className="stage-main">
+                <div className="stage-header-row">
+                  <div className="stage-scene-info">
+                    <span className="stage-status-badge">
+                      <span className="rec-dot" /> LIVE PREVIEW
+                    </span>
+                    <h3 className="stage-scene-title">{studioScenes[activeSceneIndex].title}</h3>
+                  </div>
+
+                  <div className="stage-controls">
+                    <div className="mode-toggle">
+                      <button
+                        type="button"
+                        className={heroMode === "director" ? "mode-btn active" : "mode-btn"}
+                        onClick={() => setHeroMode("director")}
+                      >
+                        Director Mode
+                      </button>
+                      <button
+                        type="button"
+                        className={heroMode === "manual" ? "mode-btn active" : "mode-btn"}
+                        onClick={() => setHeroMode("manual")}
+                      >
+                        Manual
+                      </button>
+                    </div>
+
+                    <div className="stage-dropdown">
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                        <rect x="2" y="4.5" width="12" height="7" rx="1.2" stroke="currentColor" strokeWidth="1.2" />
+                      </svg>
+                      16:9
+                    </div>
+
+                    <div className="stage-dropdown">
+                      4K
+                    </div>
+
+                    <div className="stage-dropdown style-select">
+                      <span className="style-swatch" />
+                      Anamorphic Noir
+                    </div>
+                  </div>
+                </div>
+
+                {/* Desktop: Option A (Tabbed / Active Viewport: 16:9 main player + 3 clickable scene clips below) */}
+                <div className="stage-cinema-desktop">
+                  <div className="cinema-viewport">
+                    <video
+                      key={studioScenes[activeSceneIndex].video}
+                      src={studioScenes[activeSceneIndex].video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                    <div className="viewport-hud-top">
+                      <span className="hud-pill hud-rec">
+                        <span className="rec-dot" /> REC 00:04:18:12
+                      </span>
+                      <span className="hud-pill">SeeDance 4K · 24 FPS</span>
+                      <span className="hud-pill">16:9 Anamorphic</span>
+                    </div>
+                    <div className="viewport-hud-bottom">
+                      <p className="hud-prompt-text">
+                        <strong>Prompt:</strong> &ldquo;{studioScenes[activeSceneIndex].prompt}&rdquo;
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="cinema-thumbnails">
+                    {studioScenes.map((scene, idx) => (
+                      <button
+                        key={scene.id}
+                        type="button"
+                        className={`scene-thumb-btn ${activeSceneIndex === idx ? "active" : ""}`}
+                        onClick={() => setActiveSceneIndex(idx)}
+                      >
+                        <div className="thumb-video-box">
+                          <video src={scene.video} autoPlay loop muted playsInline />
+                          {activeSceneIndex === idx && (
+                            <span className="thumb-active-tag">Active Camera</span>
+                          )}
+                        </div>
+                        <div className="thumb-meta">
+                          <span className="thumb-title">{scene.title}</span>
+                          <span className="thumb-label">{scene.label}</span>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Mobile: Option B (3-Video Multi-Camera Grid: all 3 landscape videos playing simultaneously) */}
+                <div className="stage-cinema-mobile">
+                  <div className="multicam-mobile-header">
+                    <span className="hud-pill hud-rec">
+                      <span className="rec-dot" /> MULTI-CAM FEED (3 ANGLES)
+                    </span>
+                  </div>
+                  <div className="cinema-multicam-grid">
+                    {studioScenes.map((scene, idx) => (
+                      <div key={scene.id} className="multicam-card">
+                        <div className="multicam-video-wrap">
+                          <video src={scene.video} autoPlay loop muted playsInline />
+                          <span className="multicam-badge">Angle 0{idx + 1}</span>
+                        </div>
+                        <div className="multicam-meta">
+                          <span className="multicam-title">{scene.title}</span>
+                          <span className="multicam-label">{scene.label}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="stage-footer-bar">
+                  <div className="stage-prompt-preview">
+                    <span className="stage-prompt-dot" />
+                    <span>Rendering pipeline: <strong>BytePlus SeeDance Engine</strong></span>
+                  </div>
+                  <Link href="/pricing" className="stage-cta">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M8 1l1.2 4.8L14 7l-4.8 1.2L8 13l-1.2-4.8L2 7l4.8-1.2L8 1z" />
+                    </svg>
+                    Direct In Studio
+                  </Link>
+                </div>
+              </div>
             </div>
 
-            {/* Showreel-in-hero: real generated clips (not stock footage,
-                not a UI mockup) standing in as the hero's visual proof —
-                trimmed to a hero-scaled 3-col grid, no in-grid CTA since
-                the two buttons above already cover that job. */}
+            {/* Mobile-only replacement for the hero-stage product demo above —
+                see heroReelClips comment. Rendered twice back-to-back so the
+                marquee animation can loop seamlessly at translateX(-50%). */}
+            <div className="hero-reel-mobile" aria-hidden="true">
+              <div className="hero-reel-track">
+                {[...heroReelClips, ...heroReelClips].map((src, idx) => (
+                  <div className="hero-reel-card" key={`${src}-${idx}`}>
+                    <video src={src} autoPlay loop muted playsInline />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Showreel — real generated clips (not stock footage), demonstrating
+            range across macro, action, fashion, and architectural moves. */}
+        <section id="showreel">
+          <div className="wrap">
+            <div className="kicker">Showreel</div>
+            <h2>Generated entirely from a prompt.</h2>
+            <p className="lede">
+              No stock footage, no reshoots — just a script and a style, turned into motion.
+            </p>
+
             <div className="masonry-grid">
               <div className="masonry-item tall">
                 <video src="/masonry-grid/Macro_push_in_on_iris.mp4" autoPlay loop muted playsInline />
@@ -607,6 +924,8 @@ export default function LandingPage() {
             <div className="footer-col">
               <h5>Platform</h5>
               <ul>
+                <li><a href="#showreel">Showreel</a></li>
+                <li><a href="#studio">Studio</a></li>
                 <li><a href="#workflow">Pipeline</a></li>
                 <li><a href="#capabilities">Capabilities</a></li>
                 <li><a href="#models">Models</a></li>

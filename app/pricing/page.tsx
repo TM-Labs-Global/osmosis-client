@@ -52,13 +52,10 @@ export default function PricingPage() {
           </Link>
 
           <div className="nav-links">
+            <Link href="/#showreel" className="nav-link">Showreel</Link>
             <Link href="/#workflow" className="nav-link">Workflow</Link>
-            <Link href="/#capabilities" className="nav-link">Capabilities</Link>
-            <Link href="/#models" className="nav-link">Models</Link>
-            <Link href="/#showcase" className="nav-link">Showcase</Link>
             <Link href="/distribution" className="nav-link">Distribution</Link>
             <Link href="/pricing" className="nav-link">Pricing</Link>
-            <Link href="/#faq" className="nav-link">FAQ</Link>
           </div>
 
           <Link href="#packages" className="nav-cta">

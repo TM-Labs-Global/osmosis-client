@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Familjen_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const display = Familjen_Grotesk({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+const display = localFont({
+  src: "../public/brand/font/Antonio/Antonio-VariableFont_wght.ttf",
   variable: "--font-display",
+  display: "swap",
+  weight: "100 700",
 });
 
 const body = IBM_Plex_Sans({

@@ -17,6 +17,14 @@ import { getPlanById } from "@/lib/plans";
 // In-memory duplicate guard used as fallback if Upstash Redis is not configured.
 const processedReferences = new Set<string>();
 
+if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+  console.warn(
+    "[paystack webhook] UPSTASH_REDIS_REST_URL/TOKEN not set — duplicate-webhook " +
+      "protection is using an in-memory fallback that resets on every server restart. " +
+      "Set both env vars before handling live-key traffic."
+  );
+}
+
 async function isDuplicateReference(reference: string): Promise<boolean> {
   const upstashUrl = process.env.UPSTASH_REDIS_REST_URL;
   const upstashToken = process.env.UPSTASH_REDIS_REST_TOKEN;
@@ -54,7 +62,16 @@ export async function POST(req: NextRequest) {
   // anything in it — this is the same check Paystack's own docs specify.
   const signature = req.headers.get("x-paystack-signature");
   const expected = crypto.createHmac("sha512", secret).update(rawBody).digest("hex");
-  if (signature !== expected) {
+
+  const expectedBuffer = Buffer.from(expected, "hex");
+  const signatureBuffer = signature ? Buffer.from(signature, "hex") : null;
+
+  const isValidSignature =
+    signatureBuffer !== null &&
+    signatureBuffer.length === expectedBuffer.length &&
+    crypto.timingSafeEqual(signatureBuffer, expectedBuffer);
+
+  if (!isValidSignature) {
     return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
   }
 
