@@ -27,7 +27,7 @@ function LazyVideo({
           el.pause();
         }
       },
-      { rootMargin: "350px" }
+      { rootMargin: "60px", threshold: 0.15 }
     );
 
     observer.observe(el);
@@ -55,10 +55,6 @@ const heroReelClips = [
   "/masonry-grid/Model_holding_coffee_and_bags_.mp4",
   "/masonry-grid/Figure_walking_through_concrete.mp4",
   "/masonry-grid/Person_turning_in_jacket.mp4",
-  "/masonry-grid/Dolly_push_through_tunnel.mp4",
-  "/masonry-grid/Macro_push_in_on_iris.mp4",
-  "/masonry-grid/Figure_climbing_building_facade.mp4",
-  "/masonry-grid/Person_tumbling_near_glass_surface_20260917115714.mp4",
 ];
 
 function HeroReelCardItem({ src, active }: { src: string; active: boolean }) {
@@ -472,7 +468,7 @@ export default function LandingPage() {
                         onClick={() => setActiveSceneIndex(idx)}
                       >
                         <div className="thumb-video-box">
-                          <video src={scene.video} autoPlay loop muted playsInline />
+                          <video src={scene.video} muted playsInline preload="metadata" />
                           {activeSceneIndex === idx && (
                             <span className="thumb-active-tag">Active Camera</span>
                           )}
@@ -482,29 +478,6 @@ export default function LandingPage() {
                           <span className="thumb-label">{scene.label}</span>
                         </div>
                       </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Mobile: Option B (3-Video Multi-Camera Grid: all 3 landscape videos playing simultaneously) */}
-                <div className="stage-cinema-mobile">
-                  <div className="multicam-mobile-header">
-                    <span className="hud-pill hud-rec">
-                      <span className="rec-dot" /> MULTI-CAM FEED (3 ANGLES)
-                    </span>
-                  </div>
-                  <div className="cinema-multicam-grid">
-                    {studioScenes.map((scene, idx) => (
-                      <div key={scene.id} className="multicam-card">
-                        <div className="multicam-video-wrap">
-                          <video src={scene.video} autoPlay loop muted playsInline />
-                          <span className="multicam-badge">Angle 0{idx + 1}</span>
-                        </div>
-                        <div className="multicam-meta">
-                          <span className="multicam-title">{scene.title}</span>
-                          <span className="multicam-label">{scene.label}</span>
-                        </div>
-                      </div>
                     ))}
                   </div>
                 </div>
