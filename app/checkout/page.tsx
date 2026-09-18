@@ -271,7 +271,7 @@ function CheckoutContent() {
 export default function CheckoutPage() {
   return (
     <>
-      <Script src="https://js.paystack.co/v1/inline.js" strategy="afterInteractive" />
+      <Script src="https://js.paystack.co/v2/inline.js" strategy="lazyOnload" />
       <main className="checkout-page-wrapper">
         <Suspense fallback={<div className="loading">Loading checkout…</div>}>
           <CheckoutContent />
