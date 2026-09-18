@@ -1,8 +1,147 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { plans } from "@/lib/plans";
+
+function LazyVideo({
+  src,
+  className,
+}: {
+  src: string;
+  className?: string;
+}) {
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          el.play().catch(() => {});
+        } else {
+          el.pause();
+        }
+      },
+      { rootMargin: "350px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      src={shouldLoad ? src : undefined}
+      data-src={src}
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="none"
+      className={className}
+    />
+  );
+}
+
+const heroReelClips = [
+  "/masonry-grid/Person_sprinting_down_street.mp4",
+  "/masonry-grid/Transitioning_from_smartphone_to.mp4",
+  "/masonry-grid/Model_holding_coffee_and_bags_.mp4",
+  "/masonry-grid/Figure_walking_through_concrete.mp4",
+  "/masonry-grid/Person_turning_in_jacket.mp4",
+  "/masonry-grid/Dolly_push_through_tunnel.mp4",
+  "/masonry-grid/Macro_push_in_on_iris.mp4",
+  "/masonry-grid/Figure_climbing_building_facade.mp4",
+  "/masonry-grid/Person_tumbling_near_glass_surface_20260917115714.mp4",
+];
+
+function HeroReelCardItem({ src, active }: { src: string; active: boolean }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsIntersecting(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+        }
+      },
+      { rootMargin: "150px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (isIntersecting && active) {
+      videoRef.current?.play().catch(() => {});
+    } else {
+      videoRef.current?.pause();
+    }
+  }, [isIntersecting, active]);
+
+  return (
+    <div ref={cardRef} className="hero-reel-card">
+      {shouldLoad ? (
+        <video
+          ref={videoRef}
+          src={src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+        />
+      ) : (
+        <div style={{ width: "100%", height: "100%", background: "var(--ink-2)" }} />
+      )}
+    </div>
+  );
+}
+
+function HeroReelMobile() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [containerInView, setContainerInView] = useState(true);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setContainerInView(entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={containerRef} className="hero-reel-mobile" aria-hidden="true">
+      <div
+        className="hero-reel-track"
+        style={{
+          animationPlayState: containerInView ? "running" : "paused",
+        }}
+      >
+        {[...heroReelClips, ...heroReelClips].map((src, i) => (
+          <HeroReelCardItem key={i} src={src} active={containerInView} />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const faqs = [
   {
@@ -51,28 +190,21 @@ const studioScenes = [
   },
 ];
 
-// Mobile-only hero visual: the app-shell "product demo" (hero-stage) is a
-// dashboard mockup that doesn't read well on a phone screen. Below the
-// 820px breakpoint it's swapped for this — a horizontally auto-scrolling
-// row of vertical (9:16) generated clips, TikTok/Reels-style, reusing the
-// same showreel assets as the masonry grid further down the page.
-const heroReelClips = [
-  "/masonry-grid/Macro_push_in_on_iris.mp4",
-  "/masonry-grid/Transitioning_from_smartphone_to.mp4",
-  "/masonry-grid/Dolly_push_through_tunnel.mp4",
-  "/masonry-grid/Model_holding_coffee_and_bags_.mp4",
-  "/masonry-grid/Person_tumbling_near_glass_surface_20260917115714.mp4",
-  "/masonry-grid/Person_sprinting_down_street.mp4",
-  "/masonry-grid/Figure_walking_through_concrete.mp4",
-  "/masonry-grid/Person_turning_in_jacket.mp4",
-  "/masonry-grid/Figure_climbing_building_facade.mp4",
-];
 
 export default function LandingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [heroNav, setHeroNav] = useState("script");
   const [heroMode, setHeroMode] = useState<"director" | "manual">("director");
   const [activeSceneIndex, setActiveSceneIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 820px)");
+    setIsMobile(mql.matches);
+    const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener("change", onChange);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
 
   function toggleFaq(index: number) {
     setOpenFaq(openFaq === index ? null : index);
@@ -135,8 +267,9 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Product demo: Osmosis Studio as a real app shell with live landscape video playback */}
-            <div id="studio" className="hero-stage">
+            {/* Product demo: Osmosis Studio as a real app shell on desktop */}
+            {!isMobile && (
+              <div id="studio" className="hero-stage">
               <aside className="stage-sidebar">
                 <div className="stage-brand">
                   <svg className="brand-wordmark" viewBox="0 0 999.64 361.72" fill="currentColor" aria-label="Osmosis" style={{ height: "15px", width: "auto" }}>
@@ -390,19 +523,11 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
+            )}
 
-            {/* Mobile-only replacement for the hero-stage product demo above —
-                see heroReelClips comment. Rendered twice back-to-back so the
-                marquee animation can loop seamlessly at translateX(-50%). */}
-            <div className="hero-reel-mobile" aria-hidden="true">
-              <div className="hero-reel-track">
-                {[...heroReelClips, ...heroReelClips].map((src, idx) => (
-                  <div className="hero-reel-card" key={`${src}-${idx}`}>
-                    <video src={src} autoPlay loop muted playsInline />
-                  </div>
-                ))}
-              </div>
-            </div>
+            {/* Mobile-only vertical reel: rendered ONLY when client is mobile viewport (< 820px) */}
+            {isMobile && <HeroReelMobile />}
+
           </div>
         </section>
 
@@ -418,31 +543,31 @@ export default function LandingPage() {
 
             <div className="masonry-grid">
               <div className="masonry-item tall">
-                <video src="/masonry-grid/Macro_push_in_on_iris.mp4" autoPlay loop muted playsInline />
+                <LazyVideo src="/masonry-grid/Macro_push_in_on_iris.mp4" />
               </div>
               <div className="masonry-item tall">
-                <video src="/masonry-grid/Transitioning_from_smartphone_to.mp4" autoPlay loop muted playsInline />
+                <LazyVideo src="/masonry-grid/Transitioning_from_smartphone_to.mp4" />
               </div>
               <div className="masonry-item wide">
-                <video src="/masonry-grid/Dolly_push_through_tunnel.mp4" autoPlay loop muted playsInline />
+                <LazyVideo src="/masonry-grid/Dolly_push_through_tunnel.mp4" />
               </div>
               <div className="masonry-item tall">
-                <video src="/masonry-grid/Model_holding_coffee_and_bags_.mp4" autoPlay loop muted playsInline />
+                <LazyVideo src="/masonry-grid/Model_holding_coffee_and_bags_.mp4" />
               </div>
               <div className="masonry-item wide">
-                <video src="/masonry-grid/Person_tumbling_near_glass_surface_20260917115714.mp4" autoPlay loop muted playsInline />
+                <LazyVideo src="/masonry-grid/Person_tumbling_near_glass_surface_20260917115714.mp4" />
               </div>
               <div className="masonry-item tall">
-                <video src="/masonry-grid/Person_sprinting_down_street.mp4" autoPlay loop muted playsInline />
+                <LazyVideo src="/masonry-grid/Person_sprinting_down_street.mp4" />
               </div>
               <div className="masonry-item wide">
-                <video src="/masonry-grid/Figure_walking_through_concrete.mp4" autoPlay loop muted playsInline />
+                <LazyVideo src="/masonry-grid/Figure_walking_through_concrete.mp4" />
               </div>
               <div className="masonry-item tall">
-                <video src="/masonry-grid/Person_turning_in_jacket.mp4" autoPlay loop muted playsInline />
+                <LazyVideo src="/masonry-grid/Person_turning_in_jacket.mp4" />
               </div>
               <div className="masonry-item wide">
-                <video src="/masonry-grid/Figure_climbing_building_facade.mp4" autoPlay loop muted playsInline />
+                <LazyVideo src="/masonry-grid/Figure_climbing_building_facade.mp4" />
                 <div className="masonry-cta-overlay">
                   <Link href="/pricing" className="masonry-cta">
                     Start creating

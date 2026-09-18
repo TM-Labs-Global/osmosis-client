@@ -82,7 +82,7 @@ export default function PricingPage() {
         <section id="packages">
           <div className="wrap">
             <div className="swatch-pricing-grid">
-              {plans.map((plan) => (
+              {plans.filter((p) => !p.testOnly).map((plan) => (
                 <div key={plan.id} className={`pricing-box ${plan.recommended ? "popular" : ""}`}>
                   {plan.recommended && <div className="badge-rec">Recommended</div>}
                   <h3>{plan.name}</h3>
