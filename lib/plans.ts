@@ -20,7 +20,6 @@ export interface Plan {
   minutes: string;
   perSecondNaira: string;
   recommended?: boolean;
-  testOnly?: boolean;
   modelLineup?: {
     header: string;
     subtitle: string;
@@ -30,23 +29,6 @@ export interface Plan {
 
 // Source: Oraya_Points-Pricing-Model.pdf, Sections 2–4.
 export const plans: Plan[] = [
-  {
-    id: "live-test",
-    name: "Live Test",
-    points: 10,
-    listedNaira: 93,
-    totalNaira: 100,
-    minutes: "0.1",
-    perSecondNaira: "20.00",
-    testOnly: true,
-    modelLineup: {
-      header: "TEST RUN",
-      subtitle: "Live end-to-end verification",
-      models: [
-        { name: "Seedance 2.5", resolution: "1080p", access: "Full access" },
-      ],
-    },
-  },
   {
     id: "starter",
     name: "Starter",
