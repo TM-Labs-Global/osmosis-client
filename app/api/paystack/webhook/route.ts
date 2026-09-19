@@ -31,11 +31,26 @@ async function isDuplicateReference(reference: string): Promise<boolean> {
 
   if (upstashUrl && upstashToken) {
     try {
-      // Atomic NX set with 7-day TTL (604800s)
-      const res = await fetch(`${upstashUrl}/set/${encodeURIComponent(reference)}/1?nx=true&ex=604800`, {
-        headers: { Authorization: `Bearer ${upstashToken}` },
+      // Upstash REST command array: POST ["SET", key, value, "EX", seconds, "NX"]
+      const res = await fetch(upstashUrl, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${upstashToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(["SET", `paystack:${reference}`, "1", "EX", 604800, "NX"]),
       });
       const data = await res.json();
+      if (data.error) {
+        console.error("Upstash duplicate check error:", data.error);
+        if (processedReferences.has(reference)) {
+          return true;
+        }
+        processedReferences.add(reference);
+        return false;
+      }
+      // data.result === "OK" means key was set (first time -> not a duplicate)
+      // data.result === null means key already exists (is a duplicate)
       return data.result !== "OK";
     } catch (e) {
       console.error("Upstash duplicate check failed, using local fallback:", e);
