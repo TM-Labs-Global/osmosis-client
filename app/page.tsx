@@ -57,7 +57,11 @@ function LazyVideo({
 const heroReelClips = [
   "/masonry-grid/Drone_over_Lagos_skyline_1080p_20260919121725.mp4",
   "/masonry-grid/Queen_turning_to_face_sun_20260919121645.mp4",
+  "/masonry-grid/Maasai_warrior_jumping_in_savanna_20260919131339.mp4",
+  "/masonry-grid/Children_chase_football_in_court…_20260919131237.mp4",
+  "/masonry-grid/River_spirit_rising_from_water_20260919131647.mp4",
   "/masonry-grid/Model_walking_across_crosswalk_1080p_20260919114334.mp4",
+  "/masonry-grid/Man_walking_in_compound_1080p_20260919130500.mp4",
   "/masonry-grid/Figure_walking_through_concrete_…_20260919114428.mp4",
   "/masonry-grid/Man_turning_in_trench_coat_20260919114400.mp4",
 ];
@@ -170,24 +174,24 @@ const faqs = [
 const studioScenes = [
   {
     id: "scene-1",
-    title: "Scene 01 · Cyber Tunnel",
+    title: "Scene 01 · Lagos Skyline",
     label: "Take 01 · 24 FPS",
-    prompt: "Anamorphic dolly push through illuminated tunnel, volumetric blue haze, 35mm master lens",
-    video: "/masonry-grid/Dolly_push_through_tunnel.mp4",
+    prompt: "Cinematic drone sweep over Lagos skyline, golden hour atmospheric haze, 35mm master lens",
+    video: "/masonry-grid/Drone_over_Lagos_skyline_1080p_20260919121725.mp4",
   },
   {
     id: "scene-2",
-    title: "Scene 02 · Brutalist Tracking",
-    label: "Take 03 · 24 FPS",
-    prompt: "Low-angle wide tracking shot, concrete architectural monoliths, high-contrast chiaroscuro",
-    video: "/masonry-grid/Figure_walking_through_concrete.mp4",
+    title: "Scene 02 · Sun Queen",
+    label: "Take 02 · 24 FPS",
+    prompt: "Close-up portrait of regal African queen turning into direct golden sunlight, micro-drama emotional beat",
+    video: "/masonry-grid/Queen_turning_to_face_sun_20260919121645.mp4",
   },
   {
     id: "scene-3",
-    title: "Scene 03 · High-Rise Ascent",
-    label: "Take 02 · 24 FPS",
-    prompt: "Extreme wide panoramic action, glass skyscraper facade reflection, golden hour cinematic grade",
-    video: "/masonry-grid/Figure_climbing_building_facade.mp4",
+    title: "Scene 03 · Savannah Jump",
+    label: "Take 03 · 24 FPS",
+    prompt: "Dynamic slow-motion jump of Maasai warrior against vast African savanna sky, cinematic 4K",
+    video: "/masonry-grid/Maasai_warrior_jumping_in_savanna_20260919131339.mp4",
   },
 ];
 
@@ -423,9 +427,9 @@ export default function LandingPage() {
 
                     <div className="stage-dropdown">
                       <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                        <rect x="2" y="4.5" width="12" height="7" rx="1.2" stroke="currentColor" strokeWidth="1.2" />
+                        <rect x="4.5" y="2" width="7" height="12" rx="1.2" stroke="currentColor" strokeWidth="1.2" />
                       </svg>
-                      16:9
+                      9:16
                     </div>
 
                     <div className="stage-dropdown">
@@ -439,7 +443,7 @@ export default function LandingPage() {
                   </div>
                 </div>
 
-                {/* Desktop: Option A (Tabbed / Active Viewport: 16:9 main player + 3 clickable scene clips below) */}
+                {/* Desktop: Option A (Tabbed / Active Viewport: 9:16 micro-drama player + 3 clickable scene clips below) */}
                 <div className="stage-cinema-desktop">
                   <div className="cinema-viewport">
                     <video
@@ -455,7 +459,7 @@ export default function LandingPage() {
                         <span className="rec-dot" /> REC 00:04:18:12
                       </span>
                       <span className="hud-pill">SeeDance 4K · 24 FPS</span>
-                      <span className="hud-pill">16:9 Anamorphic</span>
+                      <span className="hud-pill">9:16 Micro-Drama</span>
                     </div>
                     <div className="viewport-hud-bottom">
                       <p className="hud-prompt-text">
@@ -521,30 +525,39 @@ export default function LandingPage() {
 
             <div className="masonry-grid">
               <div className="masonry-item tall">
-                <LazyVideo src="/masonry-grid/Iris_contracting_in_warm_light_20260919115330.mp4" />
+                <LazyVideo src="/masonry-grid/Children_chase_football_in_court…_20260919131237.mp4" />
               </div>
-              <div className="masonry-item tall">
+              <div className="masonry-item taller">
                 <LazyVideo src="/masonry-grid/Drone_over_Lagos_skyline_1080p_20260919121725.mp4" />
-              </div>
-              <div className="masonry-item wide">
-                <LazyVideo src="/masonry-grid/Dolly_push_through_tunnel.mp4" />
-              </div>
-              <div className="masonry-item tall">
-                <LazyVideo src="/masonry-grid/Model_walking_across_crosswalk_1080p_20260919114334.mp4" />
-              </div>
-              <div className="masonry-item wide">
-                <LazyVideo src="/masonry-grid/Figure_walking_through_concrete.mp4" />
               </div>
               <div className="masonry-item tall">
                 <LazyVideo src="/masonry-grid/Queen_turning_to_face_sun_20260919121645.mp4" />
               </div>
-              <div className="masonry-item wide">
-                <LazyVideo src="/masonry-grid/Figure_climbing_building_facade.mp4" />
+              <div className="masonry-item taller">
+                <LazyVideo src="/masonry-grid/Maasai_warrior_jumping_in_savanna_20260919131339.mp4" />
+              </div>
+              <div className="masonry-item taller">
+                <LazyVideo src="/masonry-grid/River_spirit_rising_from_water_20260919131647.mp4" />
+              </div>
+              <div className="masonry-item tall">
+                <LazyVideo src="/masonry-grid/Model_walking_across_crosswalk_1080p_20260919114334.mp4" />
+              </div>
+              <div className="masonry-item taller">
+                <LazyVideo src="/masonry-grid/Man_walking_in_compound_1080p_20260919130500.mp4" />
+              </div>
+              <div className="masonry-item tall">
+                <LazyVideo src="/masonry-grid/Figure_walking_through_concrete_…_20260919114428.mp4" />
               </div>
               <div className="masonry-item tall">
                 <LazyVideo src="/masonry-grid/Man_turning_in_trench_coat_20260919114400.mp4" />
               </div>
-              <div className="masonry-item wide">
+              <div className="masonry-item taller">
+                <LazyVideo src="/masonry-grid/Iris_contracting_in_warm_light_20260919115330.mp4" />
+              </div>
+              <div className="masonry-item tall">
+                <LazyVideo src="/masonry-grid/Person_climbing_modern_building_…_20260919115314.mp4" />
+              </div>
+              <div className="masonry-item taller">
                 <LazyVideo src="/masonry-grid/Dancer_tumbling_beside_glass_sur…_20260919115312.mp4" />
                 <div className="masonry-cta-overlay">
                   <Link href="/pricing" className="masonry-cta">

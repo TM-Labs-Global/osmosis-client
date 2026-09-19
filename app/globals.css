@@ -449,7 +449,7 @@ a {
   max-height: 440px;
   border-radius: 12px;
   overflow: hidden;
-  background: #000;
+  background: radial-gradient(circle at center, #111116 0%, #050507 100%);
   border: 1px solid var(--line-strong);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
@@ -457,7 +457,7 @@ a {
 .cinema-viewport video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -556,7 +556,7 @@ a {
 
 .thumb-video-box {
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 9 / 11;
   border-radius: 8px;
   overflow: hidden;
   background: #000;
@@ -862,6 +862,10 @@ section h2 {
 
 .masonry-item.tall {
   grid-row: span 4;
+}
+
+.masonry-item.taller {
+  grid-row: span 5;
 }
 
 .masonry-item.wide {
@@ -2137,6 +2141,9 @@ footer {
   }
   .masonry-item.tall {
     grid-row: span 3;
+  }
+  .masonry-item.taller {
+    grid-row: span 4;
   }
   .hero-stage {
     display: none;
