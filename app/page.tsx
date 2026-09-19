@@ -55,11 +55,11 @@ function LazyVideo({
 }
 
 const heroReelClips = [
-  "/masonry-grid/Person_sprinting_down_street.mp4",
-  "/masonry-grid/Transitioning_from_smartphone_to.mp4",
-  "/masonry-grid/Model_holding_coffee_and_bags_.mp4",
-  "/masonry-grid/Figure_walking_through_concrete.mp4",
-  "/masonry-grid/Person_turning_in_jacket.mp4",
+  "/masonry-grid/Drone_over_Lagos_skyline_1080p_20260919121725.mp4",
+  "/masonry-grid/Queen_turning_to_face_sun_20260919121645.mp4",
+  "/masonry-grid/Model_walking_across_crosswalk_1080p_20260919114334.mp4",
+  "/masonry-grid/Figure_walking_through_concrete_…_20260919114428.mp4",
+  "/masonry-grid/Man_turning_in_trench_coat_20260919114400.mp4",
 ];
 
 function HeroReelCardItem({ src, active }: { src: string; active: boolean }) {
@@ -521,31 +521,31 @@ export default function LandingPage() {
 
             <div className="masonry-grid">
               <div className="masonry-item tall">
-                <LazyVideo src="/masonry-grid/Macro_push_in_on_iris.mp4" />
+                <LazyVideo src="/masonry-grid/Iris_contracting_in_warm_light_20260919115330.mp4" />
               </div>
               <div className="masonry-item tall">
-                <LazyVideo src="/masonry-grid/Transitioning_from_smartphone_to.mp4" />
+                <LazyVideo src="/masonry-grid/Drone_over_Lagos_skyline_1080p_20260919121725.mp4" />
               </div>
               <div className="masonry-item wide">
                 <LazyVideo src="/masonry-grid/Dolly_push_through_tunnel.mp4" />
               </div>
               <div className="masonry-item tall">
-                <LazyVideo src="/masonry-grid/Model_holding_coffee_and_bags_.mp4" />
-              </div>
-              <div className="masonry-item wide">
-                <LazyVideo src="/masonry-grid/Person_tumbling_near_glass_surface_20260917115714.mp4" />
-              </div>
-              <div className="masonry-item tall">
-                <LazyVideo src="/masonry-grid/Person_sprinting_down_street.mp4" />
+                <LazyVideo src="/masonry-grid/Model_walking_across_crosswalk_1080p_20260919114334.mp4" />
               </div>
               <div className="masonry-item wide">
                 <LazyVideo src="/masonry-grid/Figure_walking_through_concrete.mp4" />
               </div>
               <div className="masonry-item tall">
-                <LazyVideo src="/masonry-grid/Person_turning_in_jacket.mp4" />
+                <LazyVideo src="/masonry-grid/Queen_turning_to_face_sun_20260919121645.mp4" />
               </div>
               <div className="masonry-item wide">
                 <LazyVideo src="/masonry-grid/Figure_climbing_building_facade.mp4" />
+              </div>
+              <div className="masonry-item tall">
+                <LazyVideo src="/masonry-grid/Man_turning_in_trench_coat_20260919114400.mp4" />
+              </div>
+              <div className="masonry-item wide">
+                <LazyVideo src="/masonry-grid/Dancer_tumbling_beside_glass_sur…_20260919115312.mp4" />
                 <div className="masonry-cta-overlay">
                   <Link href="/pricing" className="masonry-cta">
                     Start creating
