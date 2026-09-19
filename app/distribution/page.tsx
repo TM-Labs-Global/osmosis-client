@@ -5,20 +5,20 @@ import Link from "next/link";
 
 const distributionFaqs = [
   {
-    q: "Do I have to publish everything I generate?",
-    a: "No. Publishing to the Osmosis feed is entirely optional and happens per project. Keep drafts, tests, and unfinished cuts private, and publish only the films you're ready to put in front of an audience.",
+    q: "Do I have to publish every micro-drama I generate?",
+    a: "No. Publishing to the Osmosis feed is entirely optional and happens per project. Keep drafts, tests, and unfinished cuts private, and publish only the micro-series episodes you're ready to put in front of an audience.",
   },
   {
     q: "How is my revenue share calculated?",
-    a: "You earn a share of the ad and platform revenue driven by verified views on your published series. Views are tallied continuously and your share accrues to your account balance in real time.",
+    a: "You earn a share of the ad and platform revenue driven by verified views on your published African micro-series. Views are tallied continuously and your share accrues to your account balance in real time.",
   },
   {
     q: "Do I keep the rights to what I publish?",
     a: "Yes. Publishing to Osmosis never transfers ownership — you retain 100% full commercial rights to every clip, storyboard, and frame you generate, whether it's published or not.",
   },
   {
-    q: "Can I also publish my film elsewhere?",
-    a: "Yes. Distribution through Osmosis isn't exclusive. License or publish your films anywhere else you like, in parallel — nothing about using Osmosis's feed restricts what you do with your own work.",
+    q: "Can I also publish my micro-series elsewhere?",
+    a: "Yes. Distribution through Osmosis isn't exclusive. License or publish your micro-dramas anywhere else you like across Africa or global platforms, in parallel — nothing about using Osmosis's feed restricts what you do with your own work.",
   },
   {
     q: "When do I start earning, and when do I get paid?",
@@ -69,9 +69,9 @@ export default function DistributionPage() {
           <div className="wrap">
             <div className="pricing-page-header">
               <div className="kicker">Distribution</div>
-              <h1>Your film finds<br />its audience.</h1>
+              <h1>Your African micro-series<br />finds its audience.</h1>
               <p className="lede" style={{ marginTop: 20, marginBottom: 0 }}>
-                Generation is only the first half. Publish straight to the Osmosis feed, reach viewers built for vertical, phone-first stories, and get paid for every view.
+                Generation is only the first half. Publish your micro-dramas straight to the Osmosis feed, reach audiences across Africa and the diaspora hooked on vertical storytelling, and get paid for every episode view.
               </p>
             </div>
           </div>
@@ -97,17 +97,17 @@ export default function DistributionPage() {
 
               <div className="pipeline-card">
                 <div className="num">02</div>
-                <h3>Reach a built-in audience</h3>
+                <h3>Reach a built-in audience across Africa</h3>
                 <p>
-                  Get discovered by viewers already watching short, serialized vertical series across the Osmosis distribution network — no ad spend required to launch.
+                  Get discovered by millions of viewers already watching short, serialized African micro-series across the Osmosis distribution network — no ad spend required to launch.
                 </p>
               </div>
 
               <div className="pipeline-card">
                 <div className="num">03</div>
-                <h3>Earn as you&rsquo;re watched</h3>
+                <h3>Earn as your micro-drama streams</h3>
                 <p>
-                  Collect a revenue share on every verified view, with optional licensing to partner platforms as your series builds an audience.
+                  Collect a revenue share on every verified view, with optional licensing to partner platforms across Africa and the diaspora as your series builds an audience.
                 </p>
               </div>
             </div>
@@ -210,9 +210,9 @@ export default function DistributionPage() {
         {/* Closing CTA */}
         <section id="distribution-cta" className="section-light">
           <div className="wrap distribution-cta-wrap">
-            <h2>Ready to make something worth publishing?</h2>
+            <h2>Ready to distribute your micro-drama?</h2>
             <p className="lede" style={{ marginBottom: 0 }}>
-              Buy generation time, direct your first film, and publish it to the Osmosis feed the moment it&rsquo;s ready.
+              Buy generation time, direct your first episodic micro-series, and publish it to the Osmosis feed the moment it&rsquo;s ready.
             </p>
             <div className="distribution-teaser-cta">
               <Link href="/pricing" className="btn">
@@ -239,7 +239,7 @@ export default function DistributionPage() {
               </svg>
             </div>
             <p className="footer-note">
-              The first AI studio engineered for directors, visual storytellers, and independent film creators.
+              The first AI studio engineered for African directors, visual storytellers, and micro-drama filmmakers.
             </p>
           </div>
 

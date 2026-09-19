@@ -158,8 +158,8 @@ const faqs = [
     a: "Every video generation consumes the same dedicated GPU compute cluster time whether you decide to keep the clip for your final cut or re-roll the prompt. We believe in complete transparency: you are buying generation compute time, not a pre-determined count of finished clips.",
   },
   {
-    q: "Who owns the rights to the generated films?",
-    a: "You retain 100% full commercial ownership of all clips, storyboards, and audio generated through your Osmosis account. You are free to distribute, monetize, and screen your films anywhere without royalty fees.",
+    q: "Who owns the rights to the generated micro-dramas and micro-series?",
+    a: "You retain 100% full commercial ownership of all clips, storyboards, and audio generated through your Osmosis account. You are free to distribute, monetize, and screen your micro-series anywhere across Africa or global platforms without royalty fees.",
   },
   {
     q: "How do I receive my account after completing payment?",
@@ -249,9 +249,9 @@ export default function LandingPage() {
                 ElevenLabs-style, instead of one centered stacked column. */}
             <div className="hero-top">
               <div className="hero-top-left">
-                <h1>Direct your
+                <h1>Direct African
                   <br />
-                  first film with AI.</h1>
+                  micro-dramas with AI.</h1>
                 <div className="hero-actions">
                   <Link href="/pricing" className="btn">
                     Get generation credits
@@ -263,7 +263,7 @@ export default function LandingPage() {
               </div>
               <div className="hero-top-right">
                 <p className="tag">
-                  From script to final 4K render and direct vertical distribution — direct consistent characters, master cinematic camera motion, reach built-in audiences, and earn revenue as you&rsquo;re watched.
+                  Empowering Africa&rsquo;s new wave of creators to produce viral micro-dramas and episodic micro-series. From script to cinematic 4K render and vertical distribution — direct consistent characters, capture audience attention, and monetize your stories across Africa and the diaspora.
                 </p>
               </div>
             </div>
@@ -303,7 +303,7 @@ export default function LandingPage() {
                       <path d="M2 6h12v7a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6z" stroke="currentColor" strokeWidth="1.3" />
                       <path d="M2 6l1.4-3h2.1L4.1 6M6.7 6l1.4-3h2.1L8.8 6M11.4 6l1.4-3h1.2l-1 3" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
                     </svg>
-                    Script to Film
+                    Script to Micro-Series
                   </button>
                   <button
                     type="button"
@@ -516,7 +516,7 @@ export default function LandingPage() {
             <div className="kicker">Showreel</div>
             <h2>Generated entirely from a prompt.</h2>
             <p className="lede">
-              No stock footage, no reshoots — just a script and a style, turned into motion.
+              No stock footage, no reshoots — turn African scripts and cultural narratives into cinematic micro-drama motion.
             </p>
 
             <div className="masonry-grid">
@@ -564,9 +564,9 @@ export default function LandingPage() {
         <section id="workflow" className="section-light">
           <div className="wrap">
             <div className="kicker">Pipeline</div>
-            <h2>How production works in Osmosis</h2>
+            <h2>How micro-series production works in Osmosis</h2>
             <p className="lede">
-              A studio built specifically for directors: turn written narrative into continuous cinematic footage and distribute directly to audiences.
+              A studio built specifically for African directors: turn written narrative into episodic micro-dramas, continuous cinematic footage, and direct mobile distribution.
             </p>
 
             <div className="pipeline-grid four-col">
@@ -598,7 +598,7 @@ export default function LandingPage() {
                 <div className="num">04</div>
                 <h3>Direct Distribution &amp; Monetization</h3>
                 <p>
-                  Publish in one tap to the Osmosis mobile feed, reach phone-first viewers worldwide, and earn a direct revenue share on every view.
+                  Publish in one tap to the Osmosis mobile feed, reach phone-first viewers across Africa and worldwide, and earn a direct revenue share on every micro-series episode.
                 </p>
               </div>
             </div>
@@ -611,7 +611,7 @@ export default function LandingPage() {
             <div className="kicker">Capabilities</div>
             <h2>Directorial control over every frame</h2>
             <p className="lede">
-              Not random clips — precision cinematography engineered for filmmakers.
+              Not random clips — precision cinematography engineered for African micro-drama filmmakers.
             </p>
 
             <div className="capabilities-bento">
@@ -793,9 +793,9 @@ export default function LandingPage() {
         <section id="showcase" className="section-light">
           <div className="wrap">
             <div className="kicker">Imagery</div>
-            <h2>One studio. Any cinematic universe.</h2>
+            <h2>One studio. Any episodic universe.</h2>
             <p className="lede">
-              Brand colors never touch the footage. The generated shot stays true to whatever world the director is actually making.
+              From Lagos cyber-noir to mythic African dynasties and modern high-stakes drama — your micro-series stays true to whatever world you&rsquo;re directing.
             </p>
 
             <div className="shot-grid">
@@ -848,9 +848,9 @@ export default function LandingPage() {
         <section id="distribution" className="section-light">
           <div className="wrap">
             <div className="kicker">Distribution</div>
-            <h2>Your film doesn&rsquo;t stop at render.</h2>
+            <h2>Your micro-series doesn&rsquo;t stop at render.</h2>
             <p className="lede">
-              Publish straight to the Osmosis feed, reach viewers built for vertical, phone-first stories, and earn a revenue share on every view.
+              Publish straight to the Osmosis feed, reach viewers hooked on vertical African micro-dramas, and earn a revenue share on every episode.
             </p>
 
             <div className="pipeline-grid">
@@ -864,17 +864,17 @@ export default function LandingPage() {
 
               <div className="pipeline-card">
                 <div className="num">02</div>
-                <h3>Reach a built-in audience</h3>
+                <h3>Reach a built-in audience across Africa</h3>
                 <p>
-                  Get discovered by viewers already watching short, serialized vertical series across the Osmosis distribution network.
+                  Get discovered by millions of mobile viewers already watching short, serialized African micro-series across the Osmosis distribution network.
                 </p>
               </div>
 
               <div className="pipeline-card">
                 <div className="num">03</div>
-                <h3>Earn as you&rsquo;re watched</h3>
+                <h3>Earn as your micro-drama streams</h3>
                 <p>
-                  Collect a revenue share on every view, with optional licensing to partner platforms as your series grows.
+                  Collect a revenue share on every view, with optional licensing to partner platforms across Africa and the diaspora as your series grows.
                 </p>
               </div>
             </div>
@@ -1019,7 +1019,7 @@ export default function LandingPage() {
               </svg>
             </div>
             <p className="footer-note">
-              The first AI studio engineered for directors, visual storytellers, and independent film creators.
+              The first AI studio engineered for African directors, visual storytellers, and micro-drama filmmakers.
             </p>
           </div>
 

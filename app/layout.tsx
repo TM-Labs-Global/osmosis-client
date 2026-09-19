@@ -24,12 +24,16 @@ const mono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://osmosisone.com"),
-  title: "Osmosis — Direct Your First Film with AI",
+  title: "Osmosis — AI Micro-Drama & Micro-Series Studio for African Filmmakers",
   description:
-    "Script to storyboard to final 4K render. Direct consistent characters, cinematic camera motion, and sound with Seedance & SeeDream AI models.",
+    "The AI film studio empowering African creators to direct viral micro-dramas and episodic micro-series. Script to storyboard to final 4K render with Seedance & SeeDream AI models.",
   applicationName: "Osmosis",
   keywords: [
-    "AI film studio",
+    "African micro-drama",
+    "AI micro-series",
+    "African filmmakers",
+    "Nollywood AI",
+    "AI film studio Africa",
     "AI video generation",
     "Seedance 2.5",
     "Seedance 2.0",
@@ -44,9 +48,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Osmosis — Direct Your First Film with AI",
+    title: "Osmosis — AI Micro-Drama & Micro-Series Studio for African Filmmakers",
     description:
-      "Script to storyboard to final 4K render. Direct consistent characters, cinematic camera motion, and sound with Seedance & SeeDream AI models.",
+      "The AI film studio empowering African creators to direct viral micro-dramas and episodic micro-series. Script to storyboard to final 4K render with Seedance & SeeDream AI models.",
     url: "https://osmosisone.com",
     siteName: "Osmosis",
     images: [
@@ -55,7 +59,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 675,
         type: "image/jpeg",
-        alt: "Osmosis AI Film Studio — Direct Your First Film with AI",
+        alt: "Osmosis — AI Micro-Drama & Micro-Series Studio for African Filmmakers",
       },
     ],
     locale: "en_US",
@@ -63,9 +67,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Osmosis — Direct Your First Film with AI",
+    title: "Osmosis — AI Micro-Drama & Micro-Series Studio for African Filmmakers",
     description:
-      "Script to storyboard to final 4K render. Direct consistent characters, cinematic camera motion, and sound with Seedance & SeeDream AI models.",
+      "The AI film studio empowering African creators to direct viral micro-dramas and episodic micro-series. Script to storyboard to final 4K render with Seedance & SeeDream AI models.",
     images: ["/og-image.jpg"],
   },
   icons: {

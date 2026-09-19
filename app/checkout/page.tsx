@@ -242,9 +242,9 @@ function CheckoutContent() {
 
           {/* Payment & Email Column */}
           <section className="checkout-card">
-            <h2>Customer Details</h2>
+            <h2>Director Details</h2>
             <p className="card-instruction">
-              Enter your name and email to receive your generation account credentials and invoice receipt.
+              Enter your name and email to receive your micro-drama production workspace credentials and invoice receipt.
             </p>
 
             <form onSubmit={startCheckout}>

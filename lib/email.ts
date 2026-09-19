@@ -97,7 +97,7 @@ function paymentConfirmationTemplate(planName: string, points?: number, customer
           <h1 style="font-size:21px; font-weight:700; margin:0 0 16px; color:#141416; letter-spacing:-0.01em;">Payment confirmed — welcome to Osmosis.</h1>
           <p style="font-size:15px; line-height:1.6; color:#4b4b4f; margin:0 0 16px;">
             ${greeting}<br/><br/>
-            Thank you for your purchase. You are confirmed for the <strong>${planName}</strong> package. Your generation workspace is being provisioned, and your login credentials will arrive in this inbox shortly.
+            Thank you for your purchase. You are confirmed for the <strong>${planName}</strong> package. Your micro-drama production workspace is being provisioned, and your login credentials will arrive in this inbox shortly.
           </p>
           ${pointsLine}
           <p style="font-size:14px; line-height:1.6; color:#6b7280; margin:0 0 16px;">

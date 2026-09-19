@@ -22,8 +22,8 @@ const pricingFaqs = [
     a: "Yes. Every package is a one-time, top-up purchase — buy Starter today and add a Growth or Enterprise package whenever you need more credits. Nothing expires and nothing is lost in between.",
   },
   {
-    q: "Who owns the rights to the generated films?",
-    a: "You retain 100% full commercial ownership of all clips, storyboards, and audio generated through your Osmosis account. You are free to distribute, monetize, and screen your films anywhere without royalty fees.",
+    q: "Who owns the rights to the generated micro-dramas and series?",
+    a: "You retain 100% full commercial ownership of all clips, storyboards, and audio generated through your Osmosis account. You are free to distribute, monetize, and screen your micro-series anywhere across Africa or global platforms without royalty fees.",
   },
 ];
 
@@ -70,9 +70,9 @@ export default function PricingPage() {
           <div className="wrap">
             <div className="pricing-page-header">
               <div className="kicker">Access</div>
-              <h1>Simple pricing.<br />Buy generation time.</h1>
+              <h1>Simple pricing.<br />Produce your micro-series.</h1>
               <p className="lede" style={{ marginTop: 20, marginBottom: 0 }}>
-                One-time purchase in Naira via Paystack. No subscriptions, no recurring commitments — buy credits, use them whenever you&rsquo;re ready to direct.
+                Transparent generation compute for African creators producing episodic micro-dramas. One-time purchase in Naira via Paystack with zero recurring subscriptions — buy credits, direct your episodes in 4K, and retain 100% of your IP.
               </p>
             </div>
           </div>
@@ -204,7 +204,7 @@ export default function PricingPage() {
               </svg>
             </div>
             <p className="footer-note">
-              The first AI studio engineered for directors, visual storytellers, and independent film creators.
+              The first AI studio engineered for African directors, visual storytellers, and micro-drama filmmakers.
             </p>
           </div>
 
