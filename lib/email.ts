@@ -227,8 +227,7 @@ function waitlistConfirmationTemplate(firstName: string) {
             <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#6b7280; margin-bottom:6px;">What to expect next</div>
             <ul style="margin:0; padding-left:18px; font-size:13.5px; color:#4b4b4f; line-height:1.6;">
               <li style="margin-bottom:6px;">Applications are evaluated on a rolling basis by our directing panel.</li>
-              <li style="margin-bottom:6px;">Accepted fellows receive an onboarding package with cohort schedules and pilot GPU compute credits.</li>
-              <li>You'll get direct access to our 4-week hybrid curriculum, live masterclasses, and distribution track.</li>
+              <li>Accepted fellows receive an onboarding package with cohort schedules and pilot GPU compute credits.</li>
             </ul>
           </div>
 
