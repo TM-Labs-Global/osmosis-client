@@ -51,8 +51,8 @@ export default function WaitlistForm() {
           <div className="next-step-item">
             <span className="step-num">02</span>
             <div>
-              <strong>Onboarding & Pilot Credits</strong>
-              <p>Selected creators receive access keys and generation compute allocations.</p>
+              <strong>Studio Access & Setup</strong>
+              <p>Selected creators receive platform access keys and account setup details.</p>
             </div>
           </div>
           <div className="next-step-item">
@@ -210,7 +210,7 @@ export default function WaitlistForm() {
       </button>
 
       <p className="form-disclaimer">
-        Free to apply. Applications are reviewed on a rolling basis. Cohort 01 participants will receive dedicated generation compute credits and distribution consideration.
+        Free to apply. Applications are reviewed on a rolling basis. Selected creators receive early platform access and distribution consideration.
       </p>
     </form>
   );

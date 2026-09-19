@@ -156,7 +156,7 @@ const faqs = [
   },
   {
     q: "What do I receive upon acceptance into Cohort 01?",
-    a: "Every accepted creator receives 5,000 pilot generation compute credits, access to our multi-model studio cluster, hands-on onboarding walkthrough on how to use the platform tools, and direct submission review for revenue-sharing distribution on the Osmosis mobile feed.",
+    a: "Every accepted creator receives early access to our multi-model studio cluster, hands-on onboarding walkthroughs on how to direct their micro-series, and direct submission review for revenue-sharing distribution on the Osmosis mobile feed.",
   },
   {
     q: "Do I need prior AI filmmaking experience or high-end computer hardware?",
@@ -164,7 +164,7 @@ const faqs = [
   },
   {
     q: "How are applicants selected for the cohort?",
-    a: "Cohort 01 is strictly limited to 25 fellows to ensure high-touch 1-on-1 support. Applications are evaluated on creative vision, original storytelling concepts, and commitment to completing a pilot micro-drama episode.",
+    a: "Applications are reviewed on a rolling basis. We evaluate applicants on creative vision, original African storytelling concepts, and readiness to direct episodic micro-dramas using our generative studio.",
   },
   {
     q: "Who owns the rights to the generated micro-dramas?",
@@ -172,7 +172,7 @@ const faqs = [
   },
   {
     q: "Can I still purchase generation credit packages directly?",
-    a: "Direct credit package purchases are temporarily reserved as we onboard our inaugural cohort. Joining the waitlist grants you priority access and special introductory compute credit allocations when general packages re-open.",
+    a: "Direct credit package purchases are temporarily reserved as we onboard our inaugural cohort. Joining the waitlist grants you priority platform access and introductory purchase options when packages re-open.",
   },
 ];
 
@@ -234,8 +234,8 @@ const cohortPerks = [
         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
       </svg>
     ),
-    title: "5,000 Pilot Compute Credits",
-    desc: "Dedicated generation credits provided to produce, re-roll, and polish your complete pilot episode.",
+    title: "Early Studio Platform Access",
+    desc: "Direct access to our multi-model generative video studio (Sora, Runway Gen-3, Kling, MiniMax) built for African creators.",
   },
   {
     icon: (
@@ -1050,10 +1050,10 @@ export default function LandingPage() {
         <section id="waitlist" className="section-light">
           <div id="pricing" /> {/* Anchor alias for legacy links */}
           <div className="wrap waitlist-section-wrap" style={{ textAlign: "center", padding: "60px 20px" }}>
-            <div className="kicker">Admissions · Cohort 01</div>
-            <h2>Apply for the Osmosis AI Filmmaking Program</h2>
+            <div className="kicker">Early Access · Cohort 01</div>
+            <h2>Apply for Early Access to Osmosis</h2>
             <p className="lede" style={{ maxWidth: 640, margin: "0 auto 36px" }}>
-              Join 25 select directors, writers, and visual creators across Africa getting early access to the Osmosis video generation platform. Complete with 5,000 pilot compute credits, hands-on directing walkthroughs, and distribution access.
+              Join creators across Africa getting early access to the Osmosis video generation platform. Receive hands-on walkthroughs on navigating the studio, directing consistent characters, and distributing your vertical micro-series.
             </p>
 
             <div>

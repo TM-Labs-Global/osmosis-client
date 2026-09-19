@@ -187,7 +187,7 @@ export async function sendWaitlistConfirmationEmail(
     from: FROM_ADDRESS,
     to,
     subject: "Application received — Osmosis AI Filmmaking Cohort",
-    text: `Hi ${firstName},\n\nThank you for applying to join the Osmosis AI Micro-Drama Filmmaking Cohort. We have received your application.\n\nOur team is reviewing applications on a rolling basis. If selected, you'll receive an invitation with platform access, onboarding walkthrough details, and your pilot compute credit allocation.\n\nIn the meantime, feel free to reply directly to this email if you have any questions.\n\n— The Osmosis Team`,
+    text: `Hi ${firstName},\n\nThank you for applying for early access to Osmosis. We have received your application.\n\nOur team is reviewing applications on a rolling basis. If selected, you'll receive an invitation with platform access and studio onboarding details.\n\nIn the meantime, feel free to reply directly to this email if you have any questions.\n\n— The Osmosis Team`,
     html: waitlistConfirmationTemplate(firstName),
   });
 }
@@ -227,7 +227,7 @@ function waitlistConfirmationTemplate(firstName: string) {
             <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#6b7280; margin-bottom:6px;">What to expect next</div>
             <ul style="margin:0; padding-left:18px; font-size:13.5px; color:#4b4b4f; line-height:1.6;">
               <li style="margin-bottom:6px;">Applications are evaluated on a rolling basis by our directing panel.</li>
-              <li>Accepted fellows receive an onboarding package with cohort schedules and pilot GPU compute credits.</li>
+              <li>Selected creators receive an invitation with early platform access and studio walkthrough details.</li>
             </ul>
           </div>
 

@@ -91,7 +91,7 @@ export default function PricingPage() {
                 <div>
                   <strong style={{ color: "var(--aura-solid)", display: "block", fontSize: 14 }}>Admissions Update · Cohort 01 Waitlist</strong>
                   <p style={{ margin: "4px 0 0", fontSize: 13.5, color: "var(--screen)" }}>
-                    We are currently onboarding creators into our <strong>AI Filmmaking Training Program</strong>. Apply now to secure priority compute credits and mentorship.
+                    We are currently onboarding creators for <strong>Early Studio Platform Access</strong>. Apply now to get early access and platform walkthroughs.
                   </p>
                 </div>
                 <Link href="/waitlist" className="btn" style={{ padding: "10px 18px", fontSize: 13.5 }}>
