@@ -152,11 +152,11 @@ function HeroReelMobile() {
 const faqs = [
   {
     q: "What is the Osmosis AI Filmmaking Training Program?",
-    a: "A 4-week hybrid intensive cohort engineered for African directors, screenwriters, animators, and digital creators. The curriculum covers vertical micro-series narrative architecture, character consistency, multi-model directing (Sora, Runway Gen-3, Kling 1.5, MiniMax), lighting, audio synthesis, and vertical re-cut editing.",
+    a: "Early platform access combined with hands-on training for African directors, screenwriters, animators, and digital creators. We give you direct access to the Osmosis video generation studio and show you how to direct vertical micro-series — covering multi-model directing (Sora, Runway Gen-3, Kling 1.5, MiniMax), character consistency, cinematic lighting, and vertical re-cut editing.",
   },
   {
     q: "What do I receive upon acceptance into Cohort 01?",
-    a: "Every accepted creator receives 5,000 pilot generation compute credits, access to our multi-model studio cluster, weekly live masterclasses with industry mentors, and direct submission review for revenue-sharing distribution on the Osmosis mobile feed.",
+    a: "Every accepted creator receives 5,000 pilot generation compute credits, access to our multi-model studio cluster, hands-on onboarding walkthrough on how to use the platform tools, and direct submission review for revenue-sharing distribution on the Osmosis mobile feed.",
   },
   {
     q: "Do I need prior AI filmmaking experience or high-end computer hardware?",
@@ -164,7 +164,7 @@ const faqs = [
   },
   {
     q: "How are applicants selected for the cohort?",
-    a: "Cohort 01 is strictly limited to 25 fellows to ensure high-touch 1-on-1 mentorship. Applications are evaluated on creative vision, original storytelling concepts, and commitment to completing a pilot micro-drama episode.",
+    a: "Cohort 01 is strictly limited to 25 fellows to ensure high-touch 1-on-1 support. Applications are evaluated on creative vision, original storytelling concepts, and commitment to completing a pilot micro-drama episode.",
   },
   {
     q: "Who owns the rights to the generated micro-dramas?",
@@ -172,14 +172,14 @@ const faqs = [
   },
   {
     q: "Can I still purchase generation credit packages directly?",
-    a: "Direct credit package purchases are temporarily reserved as we onboard our inaugural training cohort. Joining the waitlist grants you priority access and special introductory compute credit allocations when general packages re-open.",
+    a: "Direct credit package purchases are temporarily reserved as we onboard our inaugural cohort. Joining the waitlist grants you priority access and special introductory compute credit allocations when general packages re-open.",
   },
 ];
 
 const curriculumModules = [
   {
     num: "Module 01",
-    duration: "Week 1",
+    duration: "Studio Walkthrough",
     title: "Vertical Screenwriting & Hook Architecture",
     desc: "Crafting serialized African micro-dramas optimized for mobile attention spans. Master 60–90 second three-act structures, relentless cliffhangers, and prompt-ready treatment beat sheets.",
     takeaway: "Deliverable: Completed 5-episode micro-drama script & storyboard bible.",
@@ -187,7 +187,7 @@ const curriculumModules = [
   },
   {
     num: "Module 02",
-    duration: "Week 1",
+    duration: "Studio Walkthrough",
     title: "Character Consistency & Identity Anchors",
     desc: "Mastering persistent facial vectors, seed locking, and wardrobe consistency across varied camera angles and dramatic scenes without identity morphing.",
     takeaway: "Deliverable: Character model lock sheet with 3 reusable African leads.",
@@ -195,7 +195,7 @@ const curriculumModules = [
   },
   {
     num: "Module 03",
-    duration: "Week 2",
+    duration: "Studio Walkthrough",
     title: "Multi-Model Directing: Camera & Movement",
     desc: "Choosing the optimal model for every shot: Sora for complex physics, Runway Gen-3 for emotional performance, Kling 1.5 for cinematic motion, and MiniMax for natural action.",
     takeaway: "Deliverable: Multi-model camera shot deck with 12 cinematic coverage takes.",
@@ -203,7 +203,7 @@ const curriculumModules = [
   },
   {
     num: "Module 04",
-    duration: "Week 2",
+    duration: "Studio Walkthrough",
     title: "Cinematic Lighting, Melanin Fidelity & Tone",
     desc: "Directing lighting keys: Lagos golden hour, high-contrast Nollywood noir, vibrant Afrofuturist neon, and true-to-life melanin rendering across high dynamic range.",
     takeaway: "Deliverable: Calibrated lighting preset library for your series universe.",
@@ -211,7 +211,7 @@ const curriculumModules = [
   },
   {
     num: "Module 05",
-    duration: "Week 3",
+    duration: "Studio Walkthrough",
     title: "Dialogue Synthesis, Dialects & Sound Design",
     desc: "Voice cloning and dialect performance across Nigerian Pidgin, Yoruba, Swahili, Amharic, and South African accents, matched with ambient foley and micro-drama pacing.",
     takeaway: "Deliverable: Mastered multi-track dialogue and atmospheric soundscape.",
@@ -219,7 +219,7 @@ const curriculumModules = [
   },
   {
     num: "Module 06",
-    duration: "Week 4",
+    duration: "Studio Walkthrough",
     title: "Osmosis Re-Cut Studio & Distribution Launch",
     desc: "Seamless post-production: assembling your cut in the Osmosis Re-Cut Studio, vertical mobile color grading, audio master, and direct pipeline submission to the Osmosis distribution network.",
     takeaway: "Deliverable: Finished pilot episode ready for distribution & revenue share.",
@@ -246,8 +246,8 @@ const cohortPerks = [
         <path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </svg>
     ),
-    title: "Live Masterclasses & Mentorship",
-    desc: "Weekly live lab sessions with pioneering AI directors, prompt architects, and veteran showrunners.",
+    title: "Platform Onboarding & Walkthrough",
+    desc: "Hands-on walkthrough on navigating the multi-model studio cluster, seed consistency, and prompt directing.",
   },
   {
     icon: (
@@ -949,10 +949,10 @@ export default function LandingPage() {
         {/* AI Training Program Section */}
         <section id="training">
           <div className="wrap">
-            <div className="kicker">Academy &amp; Cohort</div>
+            <div className="kicker">Platform Access &amp; Training</div>
             <h2>Master African Micro-Drama Production with AI.</h2>
             <p className="lede">
-              A 4-week hybrid intensive engineered for African directors, screenwriters, animators, and digital creators. Master multi-model prompting, identity consistency, cinematic lighting, and vertical micro-series pacing.
+              Get early access to the Osmosis video generation platform with guided walkthroughs on how to direct your micro-drama. Master multi-model prompting, identity consistency, cinematic lighting, and vertical micro-series production.
             </p>
 
             <div className="training-grid">
@@ -1053,7 +1053,7 @@ export default function LandingPage() {
             <div className="kicker">Admissions · Cohort 01</div>
             <h2>Apply for the Osmosis AI Filmmaking Program</h2>
             <p className="lede" style={{ maxWidth: 640, margin: "0 auto 36px" }}>
-              Join 25 select directors, writers, and visual creators across Africa mastering end-to-end generative AI micro-drama production. Complete with 5,000 pilot compute credits, live masterclasses, and distribution access.
+              Join 25 select directors, writers, and visual creators across Africa getting early access to the Osmosis video generation platform. Complete with 5,000 pilot compute credits, hands-on directing walkthroughs, and distribution access.
             </p>
 
             <div>

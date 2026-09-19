@@ -213,11 +213,11 @@ export default function DistributionPage() {
           <div className="wrap distribution-cta-wrap">
             <h2>Ready to distribute your micro-drama?</h2>
             <p className="lede" style={{ marginBottom: 0 }}>
-              Buy generation time, direct your first episodic micro-series, and publish it to the Osmosis feed the moment it&rsquo;s ready.
+              Get early platform access, direct your first episodic micro-series, and publish it to the Osmosis feed the moment it&rsquo;s ready.
             </p>
             <div className="distribution-teaser-cta">
               <Link href="/waitlist" className="btn">
-                Apply for AI Training Cohort
+                Apply for Cohort 01 Waitlist
               </Link>
             </div>
           </div>

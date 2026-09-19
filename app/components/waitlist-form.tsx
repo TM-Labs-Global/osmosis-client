@@ -58,8 +58,8 @@ export default function WaitlistForm() {
           <div className="next-step-item">
             <span className="step-num">03</span>
             <div>
-              <strong>Live Cohort Sessions</strong>
-              <p>Interactive 4-week intensive directing curriculum and 1-on-1 mentorship.</p>
+              <strong>Platform Walkthrough & Training</strong>
+              <p>Hands-on guidance on navigating the generative studio and directing tools.</p>
             </div>
           </div>
         </div>

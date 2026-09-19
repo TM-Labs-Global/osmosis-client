@@ -187,7 +187,7 @@ export async function sendWaitlistConfirmationEmail(
     from: FROM_ADDRESS,
     to,
     subject: "Application received — Osmosis AI Filmmaking Cohort",
-    text: `Hi ${firstName},\n\nThank you for applying to join the Osmosis AI Micro-Drama Filmmaking Cohort. We have received your application.\n\nOur team is reviewing applications on a rolling basis. If selected, you'll receive an invitation with cohort start dates, curriculum access, and your pilot compute credit allocation.\n\nIn the meantime, feel free to reply directly to this email if you have any questions.\n\n— The Osmosis Team`,
+    text: `Hi ${firstName},\n\nThank you for applying to join the Osmosis AI Micro-Drama Filmmaking Cohort. We have received your application.\n\nOur team is reviewing applications on a rolling basis. If selected, you'll receive an invitation with platform access, onboarding walkthrough details, and your pilot compute credit allocation.\n\nIn the meantime, feel free to reply directly to this email if you have any questions.\n\n— The Osmosis Team`,
     html: waitlistConfirmationTemplate(firstName),
   });
 }

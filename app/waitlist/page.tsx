@@ -43,7 +43,7 @@ export default function WaitlistPage() {
               <div className="kicker">Admissions · Cohort 01</div>
               <h1>Apply for the Osmosis<br />AI Filmmaking Program.</h1>
               <p className="lede" style={{ marginTop: 20, marginBottom: 0 }}>
-                We are selecting 25 African directors, writers, animators, and digital creators for our inaugural 4-week hybrid training intensive. Master multi-model directing, character consistency, and vertical micro-series production with dedicated pilot compute credits.
+                We are selecting 25 African directors, writers, animators, and digital creators for early platform access and guided training. Get direct access to the Osmosis video generation platform, hands-on onboarding on how to direct your micro-series, and dedicated pilot compute credits.
               </p>
             </div>
           </div>
