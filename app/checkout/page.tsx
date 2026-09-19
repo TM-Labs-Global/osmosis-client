@@ -12,6 +12,8 @@ declare global {
       setup: (config: {
         key: string;
         email: string;
+        firstname?: string;
+        lastname?: string;
         amount: number; // in kobo
         currency?: string;
         metadata?: Record<string, unknown>;
@@ -32,6 +34,7 @@ function CheckoutContent() {
   const [selectedPlan, setSelectedPlan] = useState<Plan>(() => {
     return getPlanById(planQuery) || plans.find((p) => p.recommended) || plans[0];
   });
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [state, setState] = useState<CheckoutState>("idle");
   const [verifiedReference, setVerifiedReference] = useState<string | null>(null);
@@ -55,6 +58,11 @@ function CheckoutContent() {
 
   function startCheckout(e: React.FormEvent) {
     e.preventDefault();
+    const trimmedName = fullName.trim();
+    if (!trimmedName) {
+      alert("Please enter your full name.");
+      return;
+    }
     if (!/^\S+@\S+\.\S+$/.test(email)) {
       alert("Please enter a valid email address.");
       return;
@@ -70,15 +78,31 @@ function CheckoutContent() {
 
     setState("processing");
 
+    const nameParts = trimmedName.split(/\s+/);
+    const firstName = nameParts[0] || "";
+    const lastName = nameParts.slice(1).join(" ") || "";
+
     const handler = window.PaystackPop.setup({
       key: publicKey,
       email,
+      firstname: firstName,
+      lastname: lastName,
       amount: selectedPlan.totalNaira * 100, // VAT-inclusive total in kobo
       currency: "NGN",
       metadata: {
+        fullName: trimmedName,
+        firstName,
+        lastName,
         planId: selectedPlan.id,
         planName: selectedPlan.name,
         points: selectedPlan.points,
+        custom_fields: [
+          {
+            display_name: "Customer Name",
+            variable_name: "customer_name",
+            value: trimmedName,
+          },
+        ],
       },
       callback: (response) => {
         setVerifiedReference(response.reference);
@@ -133,6 +157,12 @@ function CheckoutContent() {
             You are enrolled in the <strong>{selectedPlan.name}</strong> package ({selectedPlan.points.toLocaleString()} points).
           </p>
           <div className="receipt-summary-box">
+            {fullName && (
+              <div className="receipt-data-row">
+                <span>Director Name</span>
+                <strong>{fullName}</strong>
+              </div>
+            )}
             <div className="receipt-data-row">
               <span>Account Email</span>
               <strong>{email}</strong>
@@ -164,7 +194,7 @@ function CheckoutContent() {
               <div className="plan-select-box">
                 <label htmlFor="plan-select">Package</label>
                 <select id="plan-select" value={selectedPlan.id} onChange={handlePlanChange}>
-                  {plans.map((p) => (
+                  {(selectedPlan.id === "test" ? [...plans, selectedPlan] : plans).map((p) => (
                     <option key={p.id} value={p.id}>
                       {p.name} ({p.points.toLocaleString()} credits) — ₦{p.totalNaira.toLocaleString()}
                     </option>
@@ -214,10 +244,24 @@ function CheckoutContent() {
           <section className="checkout-card">
             <h2>Customer Details</h2>
             <p className="card-instruction">
-              Enter the email where you want your generation account confirmation and access delivered.
+              Enter your name and email to receive your generation account credentials and invoice receipt.
             </p>
 
             <form onSubmit={startCheckout}>
+              <div className="input-field-group">
+                <label htmlFor="fullName">Full Name</label>
+                <input
+                  id="fullName"
+                  type="text"
+                  required
+                  placeholder="Jane Doe"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  disabled={state === "processing"}
+                  autoFocus
+                />
+              </div>
+
               <div className="input-field-group">
                 <label htmlFor="email">Email Address</label>
                 <input
@@ -228,7 +272,6 @@ function CheckoutContent() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={state === "processing"}
-                  autoFocus
                 />
               </div>
 
@@ -271,7 +314,7 @@ function CheckoutContent() {
 export default function CheckoutPage() {
   return (
     <>
-      <Script src="https://js.paystack.co/v2/inline.js" strategy="lazyOnload" />
+      <Script src="https://js.paystack.co/v2/inline.js" strategy="afterInteractive" />
       <main className="checkout-page-wrapper">
         <Suspense fallback={<div className="loading">Loading checkout…</div>}>
           <CheckoutContent />

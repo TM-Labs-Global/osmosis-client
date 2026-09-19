@@ -13,6 +13,7 @@ export interface PaystackVerifyResult {
   amountKobo: number;
   currency: string;
   email: string | undefined;
+  fullName: string | undefined;
   planName: string | undefined;
   points: number | undefined;
   gatewayStatus: string; // "success" | "failed" | "abandoned" | ...
@@ -45,12 +46,18 @@ export async function verifyPaystackTransaction(
   const json = await res.json();
   const data = json.data;
 
+  const customerName =
+    data.metadata?.fullName ||
+    [data.customer?.first_name, data.customer?.last_name].filter(Boolean).join(" ") ||
+    undefined;
+
   return {
     success: json.status === true && data.status === "success",
     reference: data.reference,
     amountKobo: data.amount,
     currency: data.currency,
     email: data.customer?.email,
+    fullName: customerName,
     planName: data.metadata?.planName,
     points: data.metadata?.points,
     gatewayStatus: data.status,

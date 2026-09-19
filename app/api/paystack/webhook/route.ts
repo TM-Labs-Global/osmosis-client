@@ -113,8 +113,16 @@ export async function POST(req: NextRequest) {
     }
 
     if (email) {
+      const fullName: string | undefined =
+        metadata?.fullName ||
+        [customer?.first_name, customer?.last_name].filter(Boolean).join(" ") ||
+        undefined;
+
+      const firstName: string | undefined = metadata?.firstName || customer?.first_name || undefined;
+      const lastName: string | undefined = metadata?.lastName || customer?.last_name || undefined;
+
       try {
-        await sendPaymentConfirmationEmail(email, plan.name, plan.points);
+        await sendPaymentConfirmationEmail(email, plan.name, plan.points, fullName);
       } catch (err) {
         console.error("Failed to send customer confirmation email:", err);
       }
@@ -123,14 +131,14 @@ export async function POST(req: NextRequest) {
       const teamEmail = process.env.TEAM_NOTIFICATION_EMAIL || process.env.RESEND_OWNER_EMAIL;
       if (teamEmail) {
         try {
-          await sendTeamNotificationEmail(teamEmail, email, plan.name, plan.points, reference, plan.totalNaira);
+          await sendTeamNotificationEmail(teamEmail, email, plan.name, plan.points, reference, plan.totalNaira, fullName);
         } catch (err) {
           console.error("Failed to send internal team notification email:", err);
         }
       }
 
       // Add paying customer to Resend audience if RESEND_GENERAL_AUDIENCE_ID is configured
-      await addCustomerToAudience(email);
+      await addCustomerToAudience(email, firstName, lastName);
     }
   }
 

@@ -17,7 +17,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  :root:has(:target) {
+  html[data-scroll-behavior="smooth"] {
     scroll-behavior: smooth;
   }
 }
@@ -536,7 +536,7 @@ a {
   padding: 8px;
   cursor: pointer;
   text-align: left;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1562,7 +1562,7 @@ section h2 {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .model-access-row:hover {
@@ -1964,7 +1964,7 @@ footer {
 }
 
 .input-field-group {
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .input-field-group label {

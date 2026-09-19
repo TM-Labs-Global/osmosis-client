@@ -82,6 +82,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={`${display.variable} ${body.variable} ${mono.variable}`}
     >

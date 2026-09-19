@@ -13,12 +13,17 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 // Resend will reject sends from an unverified domain.
 const FROM_ADDRESS = process.env.RESEND_FROM_EMAIL || "Osmosis <info@osmosisone.com>";
 
-export async function sendPaymentConfirmationEmail(to: string, planName: string, points?: number) {
+export async function sendPaymentConfirmationEmail(
+  to: string,
+  planName: string,
+  points?: number,
+  customerName?: string
+) {
   return resend.emails.send({
     from: FROM_ADDRESS,
     to,
     subject: "You're in — welcome to Osmosis",
-    html: paymentConfirmationTemplate(planName, points),
+    html: paymentConfirmationTemplate(planName, points, customerName),
   });
 }
 
@@ -28,22 +33,30 @@ export async function sendTeamNotificationEmail(
   planName: string,
   points: number,
   reference: string,
-  amountPaidNaira: number
+  amountPaidNaira: number,
+  customerName?: string
 ) {
+  const nameDisplay = customerName ? `${customerName} (${customerEmail})` : customerEmail;
   return resend.emails.send({
     from: FROM_ADDRESS,
     to,
-    subject: `🚨 [Action Required] New Osmosis Order: ${planName} (${customerEmail})`,
-    html: teamNotificationTemplate(customerEmail, planName, points, reference, amountPaidNaira),
+    subject: `🚨 [Action Required] New Osmosis Order: ${planName} (${nameDisplay})`,
+    html: teamNotificationTemplate(customerEmail, planName, points, reference, amountPaidNaira, customerName),
   });
 }
 
-export async function addCustomerToAudience(email: string) {
+export async function addCustomerToAudience(
+  email: string,
+  firstName?: string,
+  lastName?: string
+) {
   const audienceId = process.env.RESEND_GENERAL_AUDIENCE_ID;
   if (!audienceId) return;
   try {
     await resend.contacts.create({
       email,
+      firstName: firstName || undefined,
+      lastName: lastName || undefined,
       audienceId,
       unsubscribed: false,
     });
@@ -57,7 +70,8 @@ export async function addCustomerToAudience(email: string) {
 // inconsistent (often nonexistent) dark-mode support, so this doesn't
 // try to reuse Osmosis's dark UI theme — just one accent color for the
 // brand rule, everything else safe, boring, and legible everywhere.
-function paymentConfirmationTemplate(planName: string, points?: number) {
+function paymentConfirmationTemplate(planName: string, points?: number, customerName?: string) {
+  const greeting = customerName ? `Hi ${customerName},` : "Hello,";
   const pointsLine = points
     ? `<div style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; padding:14px 18px; margin:0 0 20px;">
          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#6b7280; margin-bottom:4px;">Credit Allocation</div>
@@ -82,6 +96,7 @@ function paymentConfirmationTemplate(planName: string, points?: number) {
         <td style="padding:28px 32px 8px;">
           <h1 style="font-size:21px; font-weight:700; margin:0 0 16px; color:#141416; letter-spacing:-0.01em;">Payment confirmed — welcome to Osmosis.</h1>
           <p style="font-size:15px; line-height:1.6; color:#4b4b4f; margin:0 0 16px;">
+            ${greeting}<br/><br/>
             Thank you for your purchase. You are confirmed for the <strong>${planName}</strong> package. Your generation workspace is being provisioned, and your login credentials will arrive in this inbox shortly.
           </p>
           ${pointsLine}
@@ -104,7 +119,8 @@ function teamNotificationTemplate(
   planName: string,
   points: number,
   reference: string,
-  amountPaidNaira: number
+  amountPaidNaira: number,
+  customerName?: string
 ) {
   return `
   <div style="background:#f4f4f5; padding:40px 16px; font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">
@@ -122,6 +138,10 @@ function teamNotificationTemplate(
             A customer has paid via Paystack. Please log into the generation platform, provision their account with the points below, and send their login credentials.
           </p>
           <table style="width:100%; font-size:14px; border-collapse:collapse; background:#fafafa; border:1px solid #eaeaec; border-radius:8px; margin-bottom:20px;">
+            <tr>
+              <td style="padding:10px 14px; border-bottom:1px solid #eaeaec; color:#8C8A92;">Customer Name</td>
+              <td style="padding:10px 14px; border-bottom:1px solid #eaeaec; font-weight:600; color:#141416;">${customerName || "Not provided"}</td>
+            </tr>
             <tr>
               <td style="padding:10px 14px; border-bottom:1px solid #eaeaec; color:#8C8A92;">Customer Email</td>
               <td style="padding:10px 14px; border-bottom:1px solid #eaeaec; font-weight:600; color:#141416;">${customerEmail}</td>

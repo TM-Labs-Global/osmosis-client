@@ -86,6 +86,26 @@ export const plans: Plan[] = [
   },
 ];
 
+export const testPlan: Plan = {
+  id: "test",
+  name: "Live Test Pass",
+  points: 10,
+  listedNaira: 100,
+  totalNaira: 100,
+  minutes: "0.1",
+  perSecondNaira: "10.00",
+  modelLineup: {
+    header: "TEST SUITE",
+    subtitle: "Verification Pass Included",
+    models: [
+      { name: "Seedance 2.5", resolution: "1080p", access: "Full access" },
+      { name: "Seedance 2.0", resolution: "4K", access: "Full access" },
+      { name: "SeeDream", resolution: "4K Stills", access: "Full access" },
+    ],
+  },
+};
+
 export function getPlanById(id: string | null | undefined): Plan | undefined {
+  if (id === "test" || id === "test-100") return testPlan;
   return plans.find((p) => p.id === id);
 }

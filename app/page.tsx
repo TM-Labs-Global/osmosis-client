@@ -22,17 +22,22 @@ function LazyVideo({
       ([entry]) => {
         if (entry.isIntersecting) {
           setShouldLoad(true);
-          el.play().catch(() => {});
         } else {
           el.pause();
         }
       },
-      { rootMargin: "60px", threshold: 0.15 }
+      { rootMargin: "100px", threshold: 0.15 }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (shouldLoad && videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, [shouldLoad]);
 
   return (
     <video
@@ -468,7 +473,7 @@ export default function LandingPage() {
                         onClick={() => setActiveSceneIndex(idx)}
                       >
                         <div className="thumb-video-box">
-                          <video src={scene.video} muted playsInline preload="metadata" />
+                          <video src={scene.video} muted playsInline preload="none" />
                           {activeSceneIndex === idx && (
                             <span className="thumb-active-tag">Active Camera</span>
                           )}
