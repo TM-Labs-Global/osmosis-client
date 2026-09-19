@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { plans } from "@/lib/plans";
+import WaitlistForm from "@/app/components/waitlist-form";
 
 function LazyVideo({
   src,
@@ -150,24 +151,113 @@ function HeroReelMobile() {
 
 const faqs = [
   {
-    q: "How do generation points work?",
-    a: "2 points equals exactly 1 second of AI video generation. For example, the Growth package gives you 1,900 points. Your balance and exact job cost are always displayed in points before you start any generation.",
+    q: "What is the Osmosis AI Filmmaking Training Program?",
+    a: "A 4-week hybrid intensive cohort engineered for African directors, screenwriters, animators, and digital creators. The curriculum covers vertical micro-series narrative architecture, character consistency, multi-model directing (Sora, Runway Gen-3, Kling 1.5, MiniMax), lighting, audio synthesis, and vertical re-cut editing.",
   },
   {
-    q: "Do my purchased points expire?",
-    a: "No. Points never expire. Once purchased, your balance remains in your account indefinitely until you choose to use it.",
+    q: "What do I receive upon acceptance into Cohort 01?",
+    a: "Every accepted creator receives 5,000 pilot generation compute credits, access to our multi-model studio cluster, weekly live masterclasses with industry mentors, and direct submission review for revenue-sharing distribution on the Osmosis mobile feed.",
   },
   {
-    q: "Why are retries billed at the standard rate?",
-    a: "Every video generation consumes the same dedicated GPU compute cluster time whether you decide to keep the clip for your final cut or re-roll the prompt. We believe in complete transparency: you are buying generation compute time, not a pre-determined count of finished clips.",
+    q: "Do I need prior AI filmmaking experience or high-end computer hardware?",
+    a: "No high-end GPU or extensive prior AI filmmaking experience is required. All heavy generation compute runs on Osmosis's cloud clusters. Anyone with a computer, internet access, and a compelling story is encouraged to apply.",
   },
   {
-    q: "Who owns the rights to the generated micro-dramas and micro-series?",
-    a: "You retain 100% full commercial ownership of all clips, storyboards, and audio generated through your Osmosis account. You are free to distribute, monetize, and screen your micro-series anywhere across Africa or global platforms without royalty fees.",
+    q: "How are applicants selected for the cohort?",
+    a: "Cohort 01 is strictly limited to 25 fellows to ensure high-touch 1-on-1 mentorship. Applications are evaluated on creative vision, original storytelling concepts, and commitment to completing a pilot micro-drama episode.",
   },
   {
-    q: "How do I receive my account after completing payment?",
-    a: "During this phase, our team manually provisions and calibrates each director account to ensure peak rendering fidelity. Within moments of your Paystack payment confirmation, you will receive an initial receipt email, followed promptly by your login credentials.",
+    q: "Who owns the rights to the generated micro-dramas?",
+    a: "You retain 100% full commercial ownership of all scripts, visual clips, character models, and audio generated through your Osmosis account. You are free to monetize, license, and distribute your series anywhere without royalty clawbacks.",
+  },
+  {
+    q: "Can I still purchase generation credit packages directly?",
+    a: "Direct credit package purchases are temporarily reserved as we onboard our inaugural training cohort. Joining the waitlist grants you priority access and special introductory compute credit allocations when general packages re-open.",
+  },
+];
+
+const curriculumModules = [
+  {
+    num: "Module 01",
+    duration: "Week 1",
+    title: "Vertical Screenwriting & Hook Architecture",
+    desc: "Crafting serialized African micro-dramas optimized for mobile attention spans. Master 60–90 second three-act structures, relentless cliffhangers, and prompt-ready treatment beat sheets.",
+    takeaway: "Deliverable: Completed 5-episode micro-drama script & storyboard bible.",
+    tags: ["Screenwriting", "Beat Sheets", "Hook Craft", "Vertical 9:16"],
+  },
+  {
+    num: "Module 02",
+    duration: "Week 1",
+    title: "Character Consistency & Identity Anchors",
+    desc: "Mastering persistent facial vectors, seed locking, and wardrobe consistency across varied camera angles and dramatic scenes without identity morphing.",
+    takeaway: "Deliverable: Character model lock sheet with 3 reusable African leads.",
+    tags: ["Character Lock", "Seed Control", "Face Consistency", "Wardrobe Anchor"],
+  },
+  {
+    num: "Module 03",
+    duration: "Week 2",
+    title: "Multi-Model Directing: Camera & Movement",
+    desc: "Choosing the optimal model for every shot: Sora for complex physics, Runway Gen-3 for emotional performance, Kling 1.5 for cinematic motion, and MiniMax for natural action.",
+    takeaway: "Deliverable: Multi-model camera shot deck with 12 cinematic coverage takes.",
+    tags: ["Sora", "Runway Gen-3", "Kling 1.5", "Camera Direction"],
+  },
+  {
+    num: "Module 04",
+    duration: "Week 2",
+    title: "Cinematic Lighting, Melanin Fidelity & Tone",
+    desc: "Directing lighting keys: Lagos golden hour, high-contrast Nollywood noir, vibrant Afrofuturist neon, and true-to-life melanin rendering across high dynamic range.",
+    takeaway: "Deliverable: Calibrated lighting preset library for your series universe.",
+    tags: ["Melanin Fidelity", "Cinematic 24fps", "Nollywood Noir", "Afrofuturism"],
+  },
+  {
+    num: "Module 05",
+    duration: "Week 3",
+    title: "Dialogue Synthesis, Dialects & Sound Design",
+    desc: "Voice cloning and dialect performance across Nigerian Pidgin, Yoruba, Swahili, Amharic, and South African accents, matched with ambient foley and micro-drama pacing.",
+    takeaway: "Deliverable: Mastered multi-track dialogue and atmospheric soundscape.",
+    tags: ["Voice Cloning", "African Dialects", "Lip-Sync", "Foley & Ambience"],
+  },
+  {
+    num: "Module 06",
+    duration: "Week 4",
+    title: "Osmosis Re-Cut Studio & Distribution Launch",
+    desc: "Seamless post-production: assembling your cut in the Osmosis Re-Cut Studio, vertical mobile color grading, audio master, and direct pipeline submission to the Osmosis distribution network.",
+    takeaway: "Deliverable: Finished pilot episode ready for distribution & revenue share.",
+    tags: ["Re-Cut Studio", "Color Grade", "Direct Distribution", "Monetization"],
+  },
+];
+
+const cohortPerks = [
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      </svg>
+    ),
+    title: "5,000 Pilot Compute Credits",
+    desc: "Dedicated generation credits provided to produce, re-roll, and polish your complete pilot episode.",
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
+    title: "Live Masterclasses & Mentorship",
+    desc: "Weekly live lab sessions with pioneering AI directors, prompt architects, and veteran showrunners.",
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <polygon points="10 8 16 12 10 16 10 8" />
+      </svg>
+    ),
+    title: "Distribution & Revenue Share",
+    desc: "Graduating pilots receive direct review for premiere licensing on the Osmosis mobile feed with royalties.",
   },
 ];
 
@@ -235,12 +325,13 @@ export default function LandingPage() {
           <div className="nav-links">
             <a href="#showreel" className="nav-link">Showreel</a>
             <a href="#workflow" className="nav-link">Workflow</a>
+            <a href="#training" className="nav-link">AI Training</a>
             <Link href="/distribution" className="nav-link">Distribution</Link>
-            <Link href="/pricing" className="nav-link">Pricing</Link>
+            <Link href="/waitlist" className="nav-link">Waitlist</Link>
           </div>
 
-          <Link href="/pricing" className="nav-cta">
-            Get Started
+          <Link href="/waitlist" className="nav-cta">
+            Join Waitlist
           </Link>
         </div>
       </nav>
@@ -257,8 +348,8 @@ export default function LandingPage() {
                   <br />
                   micro-dramas with AI.</h1>
                 <div className="hero-actions">
-                  <Link href="/pricing" className="btn">
-                    Get generation credits
+                  <Link href="/waitlist" className="btn">
+                    Join Cohort Waitlist
                   </Link>
                   <a href="#showreel" className="btn secondary">
                     Watch showreel
@@ -496,11 +587,11 @@ export default function LandingPage() {
                     <span className="stage-prompt-dot" />
                     <span>Rendering pipeline: <strong>BytePlus SeeDance Engine</strong></span>
                   </div>
-                  <Link href="/pricing" className="stage-cta">
+                  <Link href="/waitlist" className="stage-cta">
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
                       <path d="M8 1l1.2 4.8L14 7l-4.8 1.2L8 13l-1.2-4.8L2 7l4.8-1.2L8 1z" />
                     </svg>
-                    Direct In Studio
+                    Apply For Cohort 01
                   </Link>
                 </div>
               </div>
@@ -560,8 +651,8 @@ export default function LandingPage() {
               <div className="masonry-item taller">
                 <LazyVideo src="/masonry-grid/Dancer_tumbling_beside_glass_sur…_20260919115312.mp4" />
                 <div className="masonry-cta-overlay">
-                  <Link href="/pricing" className="masonry-cta">
-                    Start creating
+                  <Link href="/waitlist" className="masonry-cta">
+                    Join Cohort Waitlist
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <line x1="5" y1="12" x2="19" y2="12" />
                       <polyline points="12 5 19 12 12 19" />
@@ -855,6 +946,61 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* AI Training Program Section */}
+        <section id="training">
+          <div className="wrap">
+            <div className="kicker">Academy &amp; Cohort</div>
+            <h2>Master African Micro-Drama Production with AI.</h2>
+            <p className="lede">
+              A 4-week hybrid intensive engineered for African directors, screenwriters, animators, and digital creators. Master multi-model prompting, identity consistency, cinematic lighting, and vertical micro-series pacing.
+            </p>
+
+            <div className="training-grid">
+              {curriculumModules.map((mod, idx) => (
+                <div key={idx} className="curriculum-card">
+                  <div>
+                    <div className="curriculum-card-header">
+                      <span className="curriculum-num">{mod.num}</span>
+                      <span className="curriculum-duration">{mod.duration}</span>
+                    </div>
+                    <h3 className="curriculum-title">{mod.title}</h3>
+                    <p className="curriculum-desc">{mod.desc}</p>
+                    <div className="curriculum-takeaway">
+                      <strong>Core Outcome</strong>
+                      {mod.takeaway}
+                    </div>
+                  </div>
+                  <div className="curriculum-tags">
+                    {mod.tags.map((tag, tIdx) => (
+                      <span key={tIdx} className="curriculum-tag">#{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="cohort-perks-bar">
+              {cohortPerks.map((perk, pIdx) => (
+                <div key={pIdx} className="cohort-perk-item">
+                  <div className="cohort-perk-icon" aria-hidden="true">
+                    {perk.icon}
+                  </div>
+                  <div className="cohort-perk-content">
+                    <h4>{perk.title}</h4>
+                    <p>{perk.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ textAlign: "center", marginTop: "40px" }}>
+              <Link href="/waitlist" className="btn">
+                Apply for Cohort 01 Waitlist
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Distribution teaser — the pipeline doesn't end at render;
             links out to the dedicated /distribution page for the full
             mechanics (revenue share terms, FAQ). */}
@@ -900,85 +1046,20 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Authoritative Pricing Section (per lib/plans.ts) */}
-        <section id="pricing">
-          <div className="wrap">
-            <div className="kicker">Access</div>
-            <h2>Buy generation time. Start today.</h2>
-            <p className="lede">
-              Pick your tier. One-time purchase in Naira via Paystack with zero recurring commitments.
+        {/* Cohort 01 Admissions Invitation Section */}
+        <section id="waitlist" className="section-light">
+          <div id="pricing" /> {/* Anchor alias for legacy links */}
+          <div className="wrap waitlist-section-wrap" style={{ textAlign: "center", padding: "60px 20px" }}>
+            <div className="kicker">Admissions · Cohort 01</div>
+            <h2>Apply for the Osmosis AI Filmmaking Program</h2>
+            <p className="lede" style={{ maxWidth: 640, margin: "0 auto 36px" }}>
+              Join 25 select directors, writers, and visual creators across Africa mastering end-to-end generative AI micro-drama production. Complete with 5,000 pilot compute credits, live masterclasses, and distribution access.
             </p>
 
-            <div className="swatch-pricing-grid">
-              {plans.map((plan) => (
-                <div key={plan.id} className={`pricing-box ${plan.recommended ? "popular" : ""}`}>
-                  {plan.recommended && <div className="badge-rec">Recommended</div>}
-                  <h3>{plan.name}</h3>
-                  <div className="pricing-credits">
-                    <span className="amt">{plan.points.toLocaleString()}</span>
-                    <span className="lbl">credits</span>
-                  </div>
-                  <div className="pricing-rate">₦{plan.perSecondNaira} / second · 2 points = 1s</div>
-                  <div className="pricing-row">
-                    <span className="listed">₦{plan.listedNaira.toLocaleString()}</span>
-                    <span className="vat">+ VAT</span>
-                  </div>
-                  <div className="pricing-sub">
-                    ₦{plan.totalNaira.toLocaleString()} total
-                  </div>
-
-                  {plan.modelLineup && (
-                    <div className="pricing-models-card">
-                      <div className="models-card-header">
-                        <div className="models-card-title-wrap">
-                          <span className="models-card-title">
-                            ACCESS TO <span className="highlight-cyan">{plan.modelLineup.header}</span>
-                          </span>
-                          <span className="models-card-sub">{plan.modelLineup.subtitle}</span>
-                        </div>
-                        <div className="models-card-icon-badge" aria-hidden="true">
-                          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-                            <rect x="1" y="6" width="2.2" height="8" rx="1.1" />
-                            <rect x="5" y="2" width="2.2" height="12" rx="1.1" />
-                            <rect x="9" y="5" width="2.2" height="9" rx="1.1" />
-                            <rect x="13" y="1" width="2.2" height="13" rx="1.1" />
-                          </svg>
-                        </div>
-                      </div>
-
-                      <div className="models-card-rows">
-                        {plan.modelLineup.models.map((model, idx) => (
-                          <div key={idx} className="model-access-row">
-                            <div className="model-name-wrap">
-                              <svg className="model-row-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                                <rect x="1" y="6" width="2.2" height="8" rx="1.1" />
-                                <rect x="5" y="2" width="2.2" height="12" rx="1.1" />
-                                <rect x="9" y="5" width="2.2" height="9" rx="1.1" />
-                                <rect x="13" y="1" width="2.2" height="13" rx="1.1" />
-                              </svg>
-                              <span className="model-name">{model.name}</span>
-                            </div>
-                            <div className="model-badges">
-                              <span className="badge-resolution">{model.resolution}</span>
-                              <span className="badge-access">{model.access}</span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  <Link href={`/checkout?plan=${plan.id}`} className="btn">
-                    Choose {plan.name}
-                  </Link>
-                </div>
-              ))}
-            </div>
-
-            <div className="disclosures-wrap">
-              <p>2 points = 1 second of generation. Balance and job cost are always shown in points before you confirm.</p>
-              <p>Every generation is billed at the same rate whether you keep it or discard it — retries aren&apos;t free. This buys generation time, not a promised number of finished videos.</p>
-              <p>Points don&apos;t expire. Purchases are final and non-refundable.</p>
+            <div>
+              <Link href="/waitlist" className="btn" style={{ padding: "16px 36px", fontSize: 16 }}>
+                Go to Waitlist Application &rarr;
+              </Link>
             </div>
           </div>
         </section>
@@ -1041,13 +1122,13 @@ export default function LandingPage() {
               <h5>Platform</h5>
               <ul>
                 <li><a href="#showreel">Showreel</a></li>
-                <li><a href="#studio">Studio</a></li>
                 <li><a href="#workflow">Pipeline</a></li>
                 <li><a href="#capabilities">Capabilities</a></li>
                 <li><a href="#models">Models</a></li>
                 <li><a href="#showcase">Showcase</a></li>
+                <li><a href="#training">AI Training</a></li>
                 <li><Link href="/distribution">Distribution</Link></li>
-                <li><Link href="/pricing">Pricing</Link></li>
+                <li><a href="#waitlist">Cohort Waitlist</a></li>
               </ul>
             </div>
 
@@ -1056,6 +1137,7 @@ export default function LandingPage() {
               <ul>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="mailto:info@osmosisone.com">Contact</a></li>
+                <li><Link href="/pricing">Credit Packages</Link></li>
                 <li><Link href="/checkout">Checkout Portal</Link></li>
               </ul>
             </div>

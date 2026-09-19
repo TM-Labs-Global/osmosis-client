@@ -53,12 +53,13 @@ export default function DistributionPage() {
           <div className="nav-links">
             <Link href="/#showreel" className="nav-link">Showreel</Link>
             <Link href="/#workflow" className="nav-link">Workflow</Link>
+            <Link href="/#training" className="nav-link">AI Training</Link>
             <Link href="/distribution" className="nav-link">Distribution</Link>
-            <Link href="/pricing" className="nav-link">Pricing</Link>
+            <Link href="/waitlist" className="nav-link">Waitlist</Link>
           </div>
 
-          <Link href="/pricing" className="nav-cta">
-            Get Started
+          <Link href="/waitlist" className="nav-cta">
+            Join Waitlist
           </Link>
         </div>
       </nav>
@@ -215,8 +216,8 @@ export default function DistributionPage() {
               Buy generation time, direct your first episodic micro-series, and publish it to the Osmosis feed the moment it&rsquo;s ready.
             </p>
             <div className="distribution-teaser-cta">
-              <Link href="/pricing" className="btn">
-                Get generation credits
+              <Link href="/waitlist" className="btn">
+                Apply for AI Training Cohort
               </Link>
             </div>
           </div>
@@ -251,8 +252,9 @@ export default function DistributionPage() {
                 <li><Link href="/#capabilities">Capabilities</Link></li>
                 <li><Link href="/#models">Models</Link></li>
                 <li><Link href="/#showcase">Showcase</Link></li>
+                <li><Link href="/#training">AI Training</Link></li>
                 <li><Link href="/distribution">Distribution</Link></li>
-                <li><Link href="/pricing">Pricing</Link></li>
+                <li><Link href="/waitlist">Cohort Waitlist</Link></li>
               </ul>
             </div>
 
